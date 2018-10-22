@@ -1,0 +1,6 @@
+framework module Pods_Amigo_de_SangueTests {
+  umbrella header "Pods-Amigo de SangueTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
