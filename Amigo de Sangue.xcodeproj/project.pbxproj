@@ -14,7 +14,6 @@
 		EB2A4A96214F442E00FECB94 /* AmigosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2A4A95214F442E00FECB94 /* AmigosViewController.swift */; };
 		EB2A4A98214F444F00FECB94 /* DonatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2A4A97214F444F00FECB94 /* DonatorViewController.swift */; };
 		EB390A8E2150A54D000A7F3C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB390A8D2150A54D000A7F3C /* SignUpViewController.swift */; };
-		EB3E7E352174E0CC0023FB89 /* UpdateUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3E7E342174E0CC0023FB89 /* UpdateUserInfoViewController.swift */; };
 		EB5BCC0621630C2100C3BD2C /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5BCC0521630C2100C3BD2C /* UserViewController.swift */; };
 		EB6A5D89217A7AFC008D68FD /* DonatorsCellDataModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6A5D88217A7AFC008D68FD /* DonatorsCellDataModeling.swift */; };
 		EBC3233E214B4E8200C5ABAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC3233D214B4E8200C5ABAC /* AppDelegate.swift */; };
@@ -60,7 +59,6 @@
 		EB2A4A95214F442E00FECB94 /* AmigosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmigosViewController.swift; sourceTree = "<group>"; };
 		EB2A4A97214F444F00FECB94 /* DonatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonatorViewController.swift; sourceTree = "<group>"; };
 		EB390A8D2150A54D000A7F3C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		EB3E7E342174E0CC0023FB89 /* UpdateUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserInfoViewController.swift; sourceTree = "<group>"; };
 		EB5BCC0521630C2100C3BD2C /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		EB6A5D88217A7AFC008D68FD /* DonatorsCellDataModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonatorsCellDataModeling.swift; sourceTree = "<group>"; };
 		EBC3233A214B4E8200C5ABAC /* Amigo de Sangue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Amigo de Sangue.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,16 +164,13 @@
 			children = (
 				EBE51886214C4FC8009E4852 /* GoogleService-Info.plist */,
 				EBC3233D214B4E8200C5ABAC /* AppDelegate.swift */,
-				EBC3233F214B4E8200C5ABAC /* LogInViewController.swift */,
-				EBC32341214B4E8200C5ABAC /* Main.storyboard */,
-				EB3E7E342174E0CC0023FB89 /* UpdateUserInfoViewController.swift */,
-				EB5BCC0521630C2100C3BD2C /* UserViewController.swift */,
-				EB390A8D2150A54D000A7F3C /* SignUpViewController.swift */,
-				EB2A4A93214F441E00FECB94 /* MenuViewController.swift */,
-				EB2A4A95214F442E00FECB94 /* AmigosViewController.swift */,
+				EBEF1DBB217E4BAF0075B5B0 /* Amigos */,
+				EBEF1DBA217E49300075B5B0 /* StoryBoard */,
+				EBEF1DB9217E49090075B5B0 /* User */,
+				EBEF1DB8217E48D80075B5B0 /* LandingPage */,
+				EBEF1DB7217E48AC0075B5B0 /* Menu */,
 				EB6A5D8A217A7E45008D68FD /* Donators */,
 				EBC32344214B4E8300C5ABAC /* Assets.xcassets */,
-				EBC32346214B4E8300C5ABAC /* LaunchScreen.storyboard */,
 				EBC32349214B4E8300C5ABAC /* Info.plist */,
 			);
 			path = "Amigo de Sangue";
@@ -197,6 +192,50 @@
 				EBC3235F214B4E8300C5ABAC /* Info.plist */,
 			);
 			path = "Amigo de SangueUITests";
+			sourceTree = "<group>";
+		};
+		EBEF1DB7217E48AC0075B5B0 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				EB2A4A93214F441E00FECB94 /* MenuViewController.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		EBEF1DB8217E48D80075B5B0 /* LandingPage */ = {
+			isa = PBXGroup;
+			children = (
+				EB390A8D2150A54D000A7F3C /* SignUpViewController.swift */,
+				EBC3233F214B4E8200C5ABAC /* LogInViewController.swift */,
+			);
+			path = LandingPage;
+			sourceTree = "<group>";
+		};
+		EBEF1DB9217E49090075B5B0 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				EB5BCC0521630C2100C3BD2C /* UserViewController.swift */,
+			);
+			name = User;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		EBEF1DBA217E49300075B5B0 /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				EBC32346214B4E8300C5ABAC /* LaunchScreen.storyboard */,
+				EBC32341214B4E8200C5ABAC /* Main.storyboard */,
+			);
+			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		EBEF1DBB217E4BAF0075B5B0 /* Amigos */ = {
+			isa = PBXGroup;
+			children = (
+				EB2A4A95214F442E00FECB94 /* AmigosViewController.swift */,
+			);
+			name = Amigos;
+			path = StoryBoard/Amigos;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -443,7 +482,6 @@
 			files = (
 				EB5BCC0621630C2100C3BD2C /* UserViewController.swift in Sources */,
 				EB390A8E2150A54D000A7F3C /* SignUpViewController.swift in Sources */,
-				EB3E7E352174E0CC0023FB89 /* UpdateUserInfoViewController.swift in Sources */,
 				EB2A4A98214F444F00FECB94 /* DonatorViewController.swift in Sources */,
 				EB2A4A96214F442E00FECB94 /* AmigosViewController.swift in Sources */,
 				EB6A5D89217A7AFC008D68FD /* DonatorsCellDataModeling.swift in Sources */,

@@ -16,7 +16,7 @@ protocol Document {
 struct DonatorCell {
     var name: String
     var bloodTypeCode: Int
-    var gender: String
+ //   var gender: String
     var userId: String
     var wantToContribute: Bool
     
@@ -24,7 +24,7 @@ struct DonatorCell {
        return [
         "name": name,
         "bloodTypeCode": bloodTypeCode,
-        "gender": gender,
+      //  "gender": gender,
         "userId": userId,
         "wantToContribute": wantToContribute
             ]
@@ -34,10 +34,10 @@ extension DonatorCell: Document {
     init?(dictionary: [String : Any]) {
         guard let name = dictionary["name"] as? String,
             let bloodTypeCode = dictionary["bloodTypeCode"] as? Int,
-            let gender = dictionary["gender"] as? String,
+        //    let gender = dictionary["gender"] as? String,
             let userId = dictionary["userId"] as? String,
             let wantToContribute = dictionary["wantToContribute"] as? Bool else {return nil}
-        self.init(name: name,bloodTypeCode: bloodTypeCode, gender: gender, userId: userId, wantToContribute: wantToContribute)
+    self.init(name: name, bloodTypeCode: bloodTypeCode, userId: userId, wantToContribute: wantToContribute)
     }
 }
 
