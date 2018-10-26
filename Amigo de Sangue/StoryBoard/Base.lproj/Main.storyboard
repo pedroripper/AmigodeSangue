@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Donator View Controller-->
+        <!--Doadores-->
         <scene sceneID="8Yj-cW-Xsc">
             <objects>
                 <tableViewController id="nZC-Bx-s4W" customClass="DonatorViewController" customModule="Amigo_de_Sangue" customModuleProvider="target" sceneMemberID="viewController">
@@ -27,21 +27,21 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="J8B-cI-ht0">
-                                            <rect key="frame" x="55" y="10" width="43" height="27.5"/>
+                                            <rect key="frame" x="51" y="10" width="43" height="27.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fVc-ZE-iqD">
-                                            <rect key="frame" x="55" y="37.5" width="39.5" height="18"/>
+                                            <rect key="frame" x="51" y="37.5" width="39.5" height="18"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="blood-donation" id="jxk-hk-riQ">
-                                            <rect key="frame" x="16" y="20" width="24" height="24"/>
+                                            <rect key="frame" x="16" y="22" width="20" height="20"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -55,28 +55,149 @@
                             <outlet property="delegate" destination="nZC-Bx-s4W" id="CuW-79-6yl"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Wbu-7H-dGK"/>
+                    <navigationItem key="navigationItem" title="Doadores" id="Wbu-7H-dGK">
+                        <barButtonItem key="backBarButtonItem" title="Voltar" id="7FJ-7I-MfI"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SVQ-0C-vnF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="687.20000000000005" y="1965.9670164917543"/>
         </scene>
-        <!--Amigos de Sangue-->
-        <scene sceneID="WbO-nJ-Oqe">
+        <!--Request Donation View Controller-->
+        <scene sceneID="3DV-Rq-aTX">
             <objects>
-                <viewController id="9xr-tD-qg4" customClass="AmigosViewController" customModule="Amigo_de_Sangue" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="7aM-ab-Ra6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                <viewController storyboardIdentifier="RequestDonationViewController" id="5BQ-WP-qEy" customClass="RequestDonationViewController" customModule="Amigo_de_Sangue" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YnH-91-BWM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AskDonatorBlock" translatesAutoresizingMaskIntoConstraints="NO" id="KcQ-aI-AB3">
+                                <rect key="frame" x="0.0" y="35" width="375" height="199"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ab-Zc-J9a">
+                                <rect key="frame" x="307" y="170" width="33" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="round-add-button (1)"/>
+                                <connections>
+                                    <action selector="askDonationButtonTapped" destination="5BQ-WP-qEy" eventType="touchUpInside" id="JMr-h0-wCl"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UeR-X0-tBe">
+                                <rect key="frame" x="100" y="71" width="240" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7s-Oe-73n">
+                                <rect key="frame" x="100" y="176" width="199" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1fX-vb-m1G">
+                                <rect key="frame" x="100" y="120" width="116" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VOq-GS-gpw">
+                                <rect key="frame" x="57" y="257" width="261" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.040124993710000001" green="0.61176470589999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="Zts-eQ-OPz"/>
+                        <viewLayoutGuide key="safeArea" id="gKd-pp-Kac"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Amigos de Sangue" image="handshake" id="cpp-C7-piG"/>
-                    <navigationItem key="navigationItem" title="Amigos de Sangue" id="7R4-8q-Zhm"/>
+                    <connections>
+                        <outlet property="donatorBloodTypeLabel" destination="1fX-vb-m1G" id="mJR-Iz-GwL"/>
+                        <outlet property="donatorNameLabel" destination="UeR-X0-tBe" id="ifS-cS-X4b"/>
+                        <outlet property="donatorStatsOkLabel" destination="w7s-Oe-73n" id="iZf-l7-TgO"/>
+                        <outlet property="requestSentLabel" destination="VOq-GS-gpw" id="g0j-OG-XAQ"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mCh-8W-mj9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mNU-A2-vh8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1526" y="1990"/>
+            <point key="canvasLocation" x="685.60000000000002" y="2714.3928035982012"/>
+        </scene>
+        <!--Accept Donation View Controller-->
+        <scene sceneID="S3l-QG-FIm">
+            <objects>
+                <viewController storyboardIdentifier="AcceptDonationViewController" id="Eh4-KH-5Ew" customClass="AcceptDonationViewController" customModule="Amigo_de_Sangue" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dgr-3m-uCE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AcceptDonBlock" translatesAutoresizingMaskIntoConstraints="NO" id="I2L-RD-VDA">
+                                <rect key="frame" x="0.0" y="35" width="375" height="198"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qY4-2F-LGv">
+                                <rect key="frame" x="307" y="170" width="33" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="round-add-button (1)"/>
+                                <connections>
+                                    <action selector="acceptRequestButtonTapped" destination="Eh4-KH-5Ew" eventType="touchUpInside" id="vJT-Fu-pt7"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Nw-vK-vnw">
+                                <rect key="frame" x="100" y="70" width="240" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hI-36-yrF">
+                                <rect key="frame" x="100" y="117" width="85" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="0OM-dw-J4G"/>
+                    </view>
+                    <connections>
+                        <outlet property="receiverBloodTypeLabel" destination="9hI-36-yrF" id="CyE-Ij-w17"/>
+                        <outlet property="receiverNameLabel" destination="0Nw-vK-vnw" id="dIB-oK-82T"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8jn-ao-O2b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1544.8" y="2713.4932533733136"/>
+        </scene>
+        <!--Open Donation Receiver View Controller-->
+        <scene sceneID="O5o-bj-Byf">
+            <objects>
+                <viewController id="UmV-Pw-MYC" customClass="OpenDonationReceiverViewController" customModule="Amigo_de_Sangue" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DPM-yT-DwF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AcceptDonBlock" translatesAutoresizingMaskIntoConstraints="NO" id="wki-Y6-bq3">
+                                <rect key="frame" x="0.0" y="35" width="375" height="198"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wdt-wD-Dyx">
+                                <rect key="frame" x="303" y="168" width="33" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="talk"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="nrV-kK-c8s"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fu3-WQ-WZp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1545" y="3456"/>
         </scene>
         <!--Menu-->
         <scene sceneID="lrT-Cb-3kc">
@@ -92,7 +213,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cWL-js-OmG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-314" y="1972"/>
+            <point key="canvasLocation" x="-276" y="1966"/>
         </scene>
         <!--Menu-->
         <scene sceneID="7OZ-pA-Db2">
@@ -116,6 +237,52 @@
             </objects>
             <point key="canvasLocation" x="-276" y="1216"/>
         </scene>
+        <!--Amigos View Controller-->
+        <scene sceneID="pvE-Jt-PAK">
+            <objects>
+                <tableViewController id="pdQ-Yg-Ocp" customClass="AmigosViewController" customModule="Amigo_de_Sangue" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="nVF-h4-ied">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="amigosCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="amigosCell" textLabel="1Gh-MC-YeZ" detailTextLabel="uX3-Kb-V1k" style="IBUITableViewCellStyleSubtitle" id="HGp-VH-DLT">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HGp-VH-DLT" id="g5Y-Yk-ocg">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1Gh-MC-YeZ">
+                                            <rect key="frame" x="16" y="5" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uX3-Kb-V1k">
+                                            <rect key="frame" x="16" y="25.5" width="44" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="pdQ-Yg-Ocp" id="dsR-mh-dKw"/>
+                            <outlet property="delegate" destination="pdQ-Yg-Ocp" id="o8m-YH-yld"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="TEp-bJ-1Ez"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n8B-5o-7Wb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1545" y="1966"/>
+        </scene>
         <!--Eu-->
         <scene sceneID="3H6-A7-pKd">
             <objects>
@@ -124,8 +291,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="UserRect" translatesAutoresizingMaskIntoConstraints="NO" id="zE1-E5-17E">
-                                <rect key="frame" x="0.0" y="-3" width="375" height="147"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="UserRect" translatesAutoresizingMaskIntoConstraints="NO" id="zE1-E5-17E">
+                                <rect key="frame" x="-1" y="-3" width="376" height="147"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="InfoBox" translatesAutoresizingMaskIntoConstraints="NO" id="grg-ld-gWY">
@@ -204,7 +371,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="2L2-Km-g3D"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Eu" selectedImage="user_icon" id="g2K-m5-C3d"/>
+                    <tabBarItem key="tabBarItem" title="Eu" image="user_icon" selectedImage="user_icon" id="g2K-m5-C3d"/>
                     <navigationItem key="navigationItem" title="Meu Usuário" id="HoQ-A8-ER8"/>
                     <connections>
                         <outlet property="birthDate" destination="5ad-RO-4i1" id="jQW-LJ-mva"/>
@@ -215,7 +382,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SAA-Vz-eWQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2389.5999999999999" y="1989.3553223388308"/>
+            <point key="canvasLocation" x="2433" y="1216"/>
         </scene>
         <!--Amigos de Sangue-->
         <scene sceneID="521-44-oLM">
@@ -232,7 +399,7 @@
                         </textAttributes>
                     </navigationBar>
                     <connections>
-                        <segue destination="9xr-tD-qg4" kind="relationship" relationship="rootViewController" id="4K2-Nj-T61"/>
+                        <segue destination="pdQ-Yg-Ocp" kind="relationship" relationship="rootViewController" id="SXO-QQ-8Lp"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gqR-i1-fh8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -242,7 +409,7 @@
         <!--Doadores-->
         <scene sceneID="81z-T0-I5W">
             <objects>
-                <navigationController id="gsr-9l-J90" sceneMemberID="viewController">
+                <navigationController title="Doadores" id="gsr-9l-J90" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Doadores" image="blood-transfusion (2)" selectedImage="blood-transfusion (2)" id="vTr-Dp-olE"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="31t-df-evR">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -500,16 +667,44 @@
                     <connections>
                         <segue destination="gsr-9l-J90" kind="relationship" relationship="viewControllers" id="0nc-qu-zaC"/>
                         <segue destination="BZR-D8-cry" kind="relationship" relationship="viewControllers" id="zzb-yv-N4L"/>
-                        <segue destination="qbN-cg-ej4" kind="relationship" relationship="viewControllers" id="VTj-5i-HGO"/>
                         <segue destination="i4q-6m-2Nq" kind="relationship" relationship="viewControllers" id="AR0-de-gZ8"/>
+                        <segue destination="qbN-cg-ej4" kind="relationship" relationship="viewControllers" id="50D-3I-Trg"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d6v-7M-1Le" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="986" y="401"/>
         </scene>
+        <!--Open Donation Donator View Controller-->
+        <scene sceneID="v7v-kP-Bih">
+            <objects>
+                <viewController id="cyh-FL-YmY" customClass="OpenDonationDonatorViewController" customModule="Amigo_de_Sangue" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZhH-uP-jyd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AcceptDonBlock" translatesAutoresizingMaskIntoConstraints="NO" id="Jcy-hl-9eZ">
+                                <rect key="frame" x="0.0" y="35" width="375" height="198"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f32-if-prL">
+                                <rect key="frame" x="303" y="168" width="33" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="talk"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="jZL-9k-EBN"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MSR-at-a9a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1545" y="4137"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="AcceptDonBlock" width="364" height="191"/>
+        <image name="AskDonatorBlock" width="364" height="191"/>
         <image name="DonationsBox" width="351" height="181"/>
         <image name="GoBackBox" width="272" height="65"/>
         <image name="InfoBox" width="351" height="181"/>
@@ -518,12 +713,14 @@
         <image name="TemplateBox" width="310" height="500"/>
         <image name="TitleText" width="174" height="29"/>
         <image name="UserRect" width="375" height="147"/>
-        <image name="blood-donation" width="24" height="24"/>
-        <image name="blood-transfusion (2)" width="24" height="24"/>
-        <image name="handshake" width="24" height="24"/>
+        <image name="blood-donation" width="19.200000762939453" height="19.200000762939453"/>
+        <image name="blood-transfusion (2)" width="19.200000762939453" height="19.200000762939453"/>
+        <image name="handshake" width="19.200000762939453" height="19.200000762939453"/>
         <image name="log-out" width="40" height="40"/>
-        <image name="menu" width="24" height="24"/>
-        <image name="user_icon" width="16" height="16"/>
+        <image name="menu" width="19.200000762939453" height="19.200000762939453"/>
+        <image name="round-add-button (1)" width="33" height="33"/>
+        <image name="talk" width="33" height="33"/>
+        <image name="user_icon" width="12.800000190734863" height="12.800000190734863"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="BSd-Qt-6FP"/>

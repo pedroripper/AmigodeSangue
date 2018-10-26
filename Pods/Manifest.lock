@@ -116,12 +116,12 @@ PODS:
   - GTMSessionFetcher/Core (1.2.0)
   - JGProgressHUD (2.0.3)
   - leveldb-library (1.20)
+  - MessageKit (1.0.0)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
-  - ObjectMapper (3.3.0)
   - Protobuf (3.6.1)
   - TextFieldEffects (1.5.0)
 
@@ -131,7 +131,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Firestore
   - JGProgressHUD
-  - ObjectMapper (~> 3.2)
+  - MessageKit
   - TextFieldEffects
 
 SPEC REPOS:
@@ -155,8 +155,8 @@ SPEC REPOS:
     - GTMSessionFetcher
     - JGProgressHUD
     - leveldb-library
+    - MessageKit
     - nanopb
-    - ObjectMapper
     - Protobuf
     - TextFieldEffects
 
@@ -180,11 +180,11 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 0c4baf0a73acd0041bf9f71ea018deedab5ea84e
   JGProgressHUD: 12b20a8f4ffe05258f8635c1ab92816e451f904d
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
+  MessageKit: 16160036b16476b04bd0e9f2c7ce67e662e503e4
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
-  ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   TextFieldEffects: bf9e9cac7cb1a97d632fbcd0724bb6347dd86633
 
-PODFILE CHECKSUM: 32ae62ced074e20b6df695048ce4980ce28049ed
+PODFILE CHECKSUM: f68aa60381744a8f4699142e18f8a689675d7e9f
 
 COCOAPODS: 1.5.3

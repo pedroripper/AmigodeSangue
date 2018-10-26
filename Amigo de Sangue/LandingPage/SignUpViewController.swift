@@ -78,7 +78,8 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                     "userId": userIdText,
                     "bloodTypeCode": bloodTypecd as Any,
                    // "gender": selectedGender as Any,
-                    "wantToContribute": true
+                    "wantToContribute": true,
+                    "userUID": userUID as Any
                     ])
                     { err in
                     if let err = err {

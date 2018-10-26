@@ -33,46 +33,8 @@ class DonatorViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavController()
-       // compatibleBlood()
         loadData()
-        
-        
     }
-
-    /*func compatibleBlood(){
-        self.db.collection("users").document(userUID).getDocument { (document, error) in
-            if let document = document, document.exists{
-                print("GOT DOC")
-                self.userBloodcd = document.get("bloodTypeCode") as? Int
-                
-                if self.self.userBloodcd == 11{
-                    self.compatibleBloods.append(contentsOf: [11,10,41,40])
-                }
-                if self.userBloodcd == 10{
-                    self.compatibleBloods.append(contentsOf: [10,40])
-                }
-                if self.userBloodcd == 21{
-                    self.compatibleBloods.append(contentsOf: [21,20,41,40])
-                }
-                if self.userBloodcd == 20{
-                    self.compatibleBloods.append(contentsOf: [20,40])
-                }
-                if self.userBloodcd == 31{
-                    self.compatibleBloods.append(contentsOf: [11,10,21,20,31,30,41,40])
-                }
-                if self.userBloodcd == 30{
-                    self.compatibleBloods.append(contentsOf: [10,20,30,40])
-                }
-                if self.userBloodcd == 40{
-                    self.compatibleBloods.append(contentsOf: [40])
-                }
-                if self.userBloodcd == 41{
-                    self.compatibleBloods.append(contentsOf: [40,41])
-                }
-                
-                
-            } else { print("shit data")}}
-    }*/
     
     func loadData(){
         self.db.collection("users").getDocuments(completion: { (QuerySnapshot, error) in
@@ -88,23 +50,9 @@ class DonatorViewController: UITableViewController {
                     print("AWESOME")
                     self.tableView.reloadData()
                     hud.dismiss(afterDelay: 0.0)
-
-                }
-            }
-        })
-        
-       /* self.db.collection("users").whereField("bloodTypeCode", arrayContains: self.compatibleBloods).getDocuments(completion: { (QuerySnapshot, error) in
-            if let error = error{
-                print("\(error.localizedDescription)")
-            } else {
-                print(QuerySnapshot as Any)
-                self.donatorsArray = QuerySnapshot!.documents.compactMap({ DonatorCell(dictionary: $0.data())})
-                DispatchQueue.main.async {
-                    print("AWESOME")
-                    self.tableView.reloadData()
-                }
-            }
-        })*/
+                    }
+                    }
+                    })
     }
     
     func setUpNavController(){
@@ -124,6 +72,7 @@ class DonatorViewController: UITableViewController {
         let logOutRecognizer = UITapGestureRecognizer(target: self, action: #selector(DonatorViewController.lougoutButtonTapped))
         logOutButton.isUserInteractionEnabled = true
         logOutButton.addGestureRecognizer(logOutRecognizer)
+        
         let refreshRecognizer = UITapGestureRecognizer(target: self, action: #selector(DonatorViewController.refreshButtonTapped))
         refreshButton.addGestureRecognizer(refreshRecognizer)
         refreshButton.isUserInteractionEnabled = true
@@ -169,6 +118,20 @@ class DonatorViewController: UITableViewController {
         return decode
     }
     
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("selected")
+        let donator = donatorsArray[indexPath.row]
+        let StoryBoard = UIStoryboard(name: "Main", bundle: nil)
+        let DestinatedVC = StoryBoard.instantiateViewController(withIdentifier: "RequestDonationViewController") as! RequestDonationViewController
+        DestinatedVC.getDonatorName = donator.name
+        let donatorBloodType = bloodTypeDecoder(code: donator.bloodTypeCode)!
+        DestinatedVC.getDonatorBloodType = donatorBloodType
+        DestinatedVC.getDonatorUID = donator.userUID
+        DestinatedVC.getDonatorBloodTypeCode  = donator.bloodTypeCode
+        DestinatedVC.getDonatorWannaDonate = donator.wantToContribute
+        self.navigationController?.pushViewController(DestinatedVC, animated: false)
+    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         

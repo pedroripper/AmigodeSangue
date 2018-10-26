@@ -10,9 +10,14 @@
 		21B72BF78E111D75353DE181 /* Pods_Amigo_de_SangueTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A871CA9214CA40AE1AEA44E /* Pods_Amigo_de_SangueTests.framework */; };
 		2D27C561716C68079A946388 /* Pods_Amigo_de_SangueUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D4D715DAAB99BCEE76D2380 /* Pods_Amigo_de_SangueUITests.framework */; };
 		4FC7C1C84D190611B5DD2AAE /* Pods_Amigo_de_Sangue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 519ADD79C4EE4F6085B614D2 /* Pods_Amigo_de_Sangue.framework */; };
+		EB1621642181136400F6E6C9 /* RequestDonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1621632181136400F6E6C9 /* RequestDonationViewController.swift */; };
 		EB2A4A94214F441E00FECB94 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2A4A93214F441E00FECB94 /* MenuViewController.swift */; };
 		EB2A4A96214F442E00FECB94 /* AmigosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2A4A95214F442E00FECB94 /* AmigosViewController.swift */; };
 		EB2A4A98214F444F00FECB94 /* DonatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2A4A97214F444F00FECB94 /* DonatorViewController.swift */; };
+		EB339148218273610037AD0D /* AcceptDonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB339147218273610037AD0D /* AcceptDonationViewController.swift */; };
+		EB33914A218275890037AD0D /* RequestsDonationDataModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB339149218275890037AD0D /* RequestsDonationDataModeling.swift */; };
+		EB33914C2182B0280037AD0D /* OpenDonationsAsDonatorDataModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB33914B2182B0280037AD0D /* OpenDonationsAsDonatorDataModeling.swift */; };
+		EB33914E2182B0620037AD0D /* OpenDonationsAsReceiversDataModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB33914D2182B0620037AD0D /* OpenDonationsAsReceiversDataModeling.swift */; };
 		EB390A8E2150A54D000A7F3C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB390A8D2150A54D000A7F3C /* SignUpViewController.swift */; };
 		EB5BCC0621630C2100C3BD2C /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5BCC0521630C2100C3BD2C /* UserViewController.swift */; };
 		EB6A5D89217A7AFC008D68FD /* DonatorsCellDataModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6A5D88217A7AFC008D68FD /* DonatorsCellDataModeling.swift */; };
@@ -23,6 +28,8 @@
 		EBC32348214B4E8300C5ABAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBC32346214B4E8300C5ABAC /* LaunchScreen.storyboard */; };
 		EBC32353214B4E8300C5ABAC /* Amigo_de_SangueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC32352214B4E8300C5ABAC /* Amigo_de_SangueTests.swift */; };
 		EBC3235E214B4E8300C5ABAC /* Amigo_de_SangueUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC3235D214B4E8300C5ABAC /* Amigo_de_SangueUITests.swift */; };
+		EBC66BB92183852B009461A7 /* OpenDonationDonatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC66BB82183852B009461A7 /* OpenDonationDonatorViewController.swift */; };
+		EBC66BBB2183855B009461A7 /* OpenDonationReceiverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC66BBA2183855B009461A7 /* OpenDonationReceiverViewController.swift */; };
 		EBE51887214C4FC9009E4852 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EBE51886214C4FC8009E4852 /* GoogleService-Info.plist */; };
 		EBE51888214C4FC9009E4852 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EBE51886214C4FC8009E4852 /* GoogleService-Info.plist */; };
 		EBE51889214C4FC9009E4852 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EBE51886214C4FC8009E4852 /* GoogleService-Info.plist */; };
@@ -55,9 +62,14 @@
 		B1A1F1268D79FF853C505BEF /* Pods-Amigo de SangueUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Amigo de SangueUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Amigo de SangueUITests/Pods-Amigo de SangueUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C22E410E2202CEBD966B5CE7 /* Pods-Amigo de SangueTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Amigo de SangueTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Amigo de SangueTests/Pods-Amigo de SangueTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D6D45664439AE005C6FF8317 /* Pods-Amigo de Sangue.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Amigo de Sangue.release.xcconfig"; path = "Pods/Target Support Files/Pods-Amigo de Sangue/Pods-Amigo de Sangue.release.xcconfig"; sourceTree = "<group>"; };
+		EB1621632181136400F6E6C9 /* RequestDonationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDonationViewController.swift; sourceTree = "<group>"; };
 		EB2A4A93214F441E00FECB94 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		EB2A4A95214F442E00FECB94 /* AmigosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmigosViewController.swift; sourceTree = "<group>"; };
 		EB2A4A97214F444F00FECB94 /* DonatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonatorViewController.swift; sourceTree = "<group>"; };
+		EB339147218273610037AD0D /* AcceptDonationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptDonationViewController.swift; sourceTree = "<group>"; };
+		EB339149218275890037AD0D /* RequestsDonationDataModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsDonationDataModeling.swift; sourceTree = "<group>"; };
+		EB33914B2182B0280037AD0D /* OpenDonationsAsDonatorDataModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDonationsAsDonatorDataModeling.swift; sourceTree = "<group>"; };
+		EB33914D2182B0620037AD0D /* OpenDonationsAsReceiversDataModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDonationsAsReceiversDataModeling.swift; sourceTree = "<group>"; };
 		EB390A8D2150A54D000A7F3C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		EB5BCC0521630C2100C3BD2C /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		EB6A5D88217A7AFC008D68FD /* DonatorsCellDataModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonatorsCellDataModeling.swift; sourceTree = "<group>"; };
@@ -74,6 +86,8 @@
 		EBC32359214B4E8300C5ABAC /* Amigo de SangueUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Amigo de SangueUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBC3235D214B4E8300C5ABAC /* Amigo_de_SangueUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Amigo_de_SangueUITests.swift; sourceTree = "<group>"; };
 		EBC3235F214B4E8300C5ABAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EBC66BB82183852B009461A7 /* OpenDonationDonatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDonationDonatorViewController.swift; sourceTree = "<group>"; };
+		EBC66BBA2183855B009461A7 /* OpenDonationReceiverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDonationReceiverViewController.swift; sourceTree = "<group>"; };
 		EBE51886214C4FC8009E4852 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,6 +147,7 @@
 			children = (
 				EB6A5D88217A7AFC008D68FD /* DonatorsCellDataModeling.swift */,
 				EB2A4A97214F444F00FECB94 /* DonatorViewController.swift */,
+				EB1621632181136400F6E6C9 /* RequestDonationViewController.swift */,
 			);
 			path = Donators;
 			sourceTree = "<group>";
@@ -233,6 +248,12 @@
 			isa = PBXGroup;
 			children = (
 				EB2A4A95214F442E00FECB94 /* AmigosViewController.swift */,
+				EB339147218273610037AD0D /* AcceptDonationViewController.swift */,
+				EB33914B2182B0280037AD0D /* OpenDonationsAsDonatorDataModeling.swift */,
+				EB33914D2182B0620037AD0D /* OpenDonationsAsReceiversDataModeling.swift */,
+				EB339149218275890037AD0D /* RequestsDonationDataModeling.swift */,
+				EBC66BB82183852B009461A7 /* OpenDonationDonatorViewController.swift */,
+				EBC66BBA2183855B009461A7 /* OpenDonationReceiverViewController.swift */,
 			);
 			name = Amigos;
 			path = StoryBoard/Amigos;
@@ -440,7 +461,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/MessageKit/MessageKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
@@ -457,7 +478,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGProgressHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessageKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
@@ -481,12 +502,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB5BCC0621630C2100C3BD2C /* UserViewController.swift in Sources */,
+				EB33914C2182B0280037AD0D /* OpenDonationsAsDonatorDataModeling.swift in Sources */,
 				EB390A8E2150A54D000A7F3C /* SignUpViewController.swift in Sources */,
+				EBC66BBB2183855B009461A7 /* OpenDonationReceiverViewController.swift in Sources */,
 				EB2A4A98214F444F00FECB94 /* DonatorViewController.swift in Sources */,
 				EB2A4A96214F442E00FECB94 /* AmigosViewController.swift in Sources */,
+				EB339148218273610037AD0D /* AcceptDonationViewController.swift in Sources */,
+				EB1621642181136400F6E6C9 /* RequestDonationViewController.swift in Sources */,
 				EB6A5D89217A7AFC008D68FD /* DonatorsCellDataModeling.swift in Sources */,
 				EBC32340214B4E8200C5ABAC /* LogInViewController.swift in Sources */,
+				EB33914E2182B0620037AD0D /* OpenDonationsAsReceiversDataModeling.swift in Sources */,
+				EBC66BB92183852B009461A7 /* OpenDonationDonatorViewController.swift in Sources */,
 				EB2A4A94214F441E00FECB94 /* MenuViewController.swift in Sources */,
+				EB33914A218275890037AD0D /* RequestsDonationDataModeling.swift in Sources */,
 				EBC3233E214B4E8200C5ABAC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
