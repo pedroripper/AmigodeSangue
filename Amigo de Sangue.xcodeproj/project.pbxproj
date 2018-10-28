@@ -21,6 +21,7 @@
 		EB390A8E2150A54D000A7F3C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB390A8D2150A54D000A7F3C /* SignUpViewController.swift */; };
 		EB5BCC0621630C2100C3BD2C /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5BCC0521630C2100C3BD2C /* UserViewController.swift */; };
 		EB6A5D89217A7AFC008D68FD /* DonatorsCellDataModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6A5D88217A7AFC008D68FD /* DonatorsCellDataModeling.swift */; };
+		EBC098252183CD42008C3645 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC098242183CD42008C3645 /* ChatViewController.swift */; };
 		EBC3233E214B4E8200C5ABAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC3233D214B4E8200C5ABAC /* AppDelegate.swift */; };
 		EBC32340214B4E8200C5ABAC /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC3233F214B4E8200C5ABAC /* LogInViewController.swift */; };
 		EBC32343214B4E8200C5ABAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBC32341214B4E8200C5ABAC /* Main.storyboard */; };
@@ -73,6 +74,7 @@
 		EB390A8D2150A54D000A7F3C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		EB5BCC0521630C2100C3BD2C /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		EB6A5D88217A7AFC008D68FD /* DonatorsCellDataModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonatorsCellDataModeling.swift; sourceTree = "<group>"; };
+		EBC098242183CD42008C3645 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		EBC3233A214B4E8200C5ABAC /* Amigo de Sangue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Amigo de Sangue.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBC3233D214B4E8200C5ABAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBC3233F214B4E8200C5ABAC /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				EB6A5D8A217A7E45008D68FD /* Donators */,
 				EBC32344214B4E8300C5ABAC /* Assets.xcassets */,
 				EBC32349214B4E8300C5ABAC /* Info.plist */,
+				EBCCD51B218503C4007823C0 /* Chat */,
 			);
 			path = "Amigo de Sangue";
 			sourceTree = "<group>";
@@ -207,6 +210,22 @@
 				EBC3235F214B4E8300C5ABAC /* Info.plist */,
 			);
 			path = "Amigo de SangueUITests";
+			sourceTree = "<group>";
+		};
+		EBCCD51B218503C4007823C0 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				EBCCD51C2185059D007823C0 /* MessageModel */,
+				EBC098242183CD42008C3645 /* ChatViewController.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		EBCCD51C2185059D007823C0 /* MessageModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MessageModel;
 			sourceTree = "<group>";
 		};
 		EBEF1DB7217E48AC0075B5B0 /* Menu */ = {
@@ -503,6 +522,7 @@
 			files = (
 				EB5BCC0621630C2100C3BD2C /* UserViewController.swift in Sources */,
 				EB33914C2182B0280037AD0D /* OpenDonationsAsDonatorDataModeling.swift in Sources */,
+				EBC098252183CD42008C3645 /* ChatViewController.swift in Sources */,
 				EB390A8E2150A54D000A7F3C /* SignUpViewController.swift in Sources */,
 				EBC66BBB2183855B009461A7 /* OpenDonationReceiverViewController.swift in Sources */,
 				EB2A4A98214F444F00FECB94 /* DonatorViewController.swift in Sources */,
