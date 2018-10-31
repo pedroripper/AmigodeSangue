@@ -21,6 +21,7 @@
 		EB390A8E2150A54D000A7F3C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB390A8D2150A54D000A7F3C /* SignUpViewController.swift */; };
 		EB5BCC0621630C2100C3BD2C /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5BCC0521630C2100C3BD2C /* UserViewController.swift */; };
 		EB6A5D89217A7AFC008D68FD /* DonatorsCellDataModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6A5D88217A7AFC008D68FD /* DonatorsCellDataModeling.swift */; };
+		EB8B54FC218A194D00A21B43 /* CentersDataModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8B54FB218A194D00A21B43 /* CentersDataModeling.swift */; };
 		EBC098252183CD42008C3645 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC098242183CD42008C3645 /* ChatViewController.swift */; };
 		EBC3233E214B4E8200C5ABAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC3233D214B4E8200C5ABAC /* AppDelegate.swift */; };
 		EBC32340214B4E8200C5ABAC /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC3233F214B4E8200C5ABAC /* LogInViewController.swift */; };
@@ -74,6 +75,7 @@
 		EB390A8D2150A54D000A7F3C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		EB5BCC0521630C2100C3BD2C /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		EB6A5D88217A7AFC008D68FD /* DonatorsCellDataModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonatorsCellDataModeling.swift; sourceTree = "<group>"; };
+		EB8B54FB218A194D00A21B43 /* CentersDataModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentersDataModeling.swift; sourceTree = "<group>"; };
 		EBC098242183CD42008C3645 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		EBC3233A214B4E8200C5ABAC /* Amigo de Sangue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Amigo de Sangue.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBC3233D214B4E8200C5ABAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				EB6A5D88217A7AFC008D68FD /* DonatorsCellDataModeling.swift */,
 				EB2A4A97214F444F00FECB94 /* DonatorViewController.swift */,
 				EB1621632181136400F6E6C9 /* RequestDonationViewController.swift */,
+				EB8B54FB218A194D00A21B43 /* CentersDataModeling.swift */,
 			);
 			path = Donators;
 			sourceTree = "<group>";
@@ -521,6 +524,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB5BCC0621630C2100C3BD2C /* UserViewController.swift in Sources */,
+				EB8B54FC218A194D00A21B43 /* CentersDataModeling.swift in Sources */,
 				EB33914C2182B0280037AD0D /* OpenDonationsAsDonatorDataModeling.swift in Sources */,
 				EBC098252183CD42008C3645 /* ChatViewController.swift in Sources */,
 				EB390A8E2150A54D000A7F3C /* SignUpViewController.swift in Sources */,

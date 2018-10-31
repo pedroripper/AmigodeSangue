@@ -12,8 +12,10 @@ import FirebaseFirestore
 import Firebase
 import JGProgressHUD
 
-class RequestDonationViewController: UIViewController {
+class RequestDonationViewController: UIViewController{
     
+    
+  
     var db: Firestore = Firestore.firestore()
     let userUID: String = Auth.auth().currentUser!.uid as String
     //Donator data
@@ -23,10 +25,19 @@ class RequestDonationViewController: UIViewController {
     var getDonatorUID = String()
     var getDonatorWannaDonate = Bool()
     
+    //Centers
+    var centersArray = [center]()
+    var centersNames: [String]?
+    @IBOutlet var centerPicker: UITextField!
+    let centersPicker = UIPickerView()
+    var selectedCenter: String?
+    
+    
     @IBOutlet var donatorNameLabel: UILabel!
     @IBOutlet var donatorBloodTypeLabel: UILabel!
     @IBOutlet var donatorStatsOkLabel: UILabel!
     @IBOutlet var requestSentLabel: UILabel!
+    
     
     var userBloodTypecode: Int?
     var username: String?
@@ -35,7 +46,22 @@ class RequestDonationViewController: UIViewController {
         super.viewDidLoad()
         userData()
         loadData()
+     //   loadCenters()
     }
+ /*
+    func loadCenters(){
+        db.collection("centers").getDocuments { (QuerySnapshot, error) in
+            if let error = error{
+                print("\(error.localizedDescription)")
+            } else {
+                self.centersArray = QuerySnapshot!.documents.compactMap({center(centerDictionary:$0.data())})
+                DispatchQueue.main.async {
+                    self.centersNames = centersArray.
+                }
+            }
+        }
+    }
+    */
     func userData(){
         db.collection("users").document(userUID).getDocument { (document, error) in
         if let document = document, document.exists{
@@ -83,5 +109,18 @@ class RequestDonationViewController: UIViewController {
             ])
         self.requestSentLabel.text = "Pedido Enviado!"
     }
+    /*
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return centersArray.count
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+       // return centersArray[index]
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+       
+    }*/
     
 }

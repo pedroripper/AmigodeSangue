@@ -47,7 +47,7 @@ class DonatorViewController: UITableViewController {
                 print(QuerySnapshot as Any)
                 self.donatorsArray = QuerySnapshot!.documents.compactMap({ DonatorCell(dictionary: $0.data())})
                 DispatchQueue.main.async {
-                    print("AWESOME")
+                    print(self.donatorsArray)
                     self.tableView.reloadData()
                     hud.dismiss(afterDelay: 0.0)
                     }

@@ -5,7 +5,7 @@
 //  Created by Pedro Ripper on 26/10/18.
 //  Copyright © 2018 Pedro Ripper. All rights reserved.
 //
-
+/*
 import UIKit
 import MessageKit
 import FirebaseAuth
@@ -60,3 +60,4 @@ class ChatViewController: MessagesViewController {
 }
 
 
+*/
