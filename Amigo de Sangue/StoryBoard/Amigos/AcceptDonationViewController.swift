@@ -28,6 +28,10 @@ class AcceptDonationViewController: UIViewController {
     
     @IBOutlet var receiverNameLabel: UILabel!
     @IBOutlet var receiverBloodTypeLabel: UILabel!
+    
+    @IBOutlet weak var requestedCenterName: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
@@ -37,10 +41,18 @@ class AcceptDonationViewController: UIViewController {
         self.receiverNameLabel.text = getReceiverName
         self.receiverBloodTypeLabel.text = getReceiverBloodType
         print(getReceiverName)
+        self.db.collection("users").document(self.userUID).collection("ReceiversRequest").document(getReceiverUID).getDocument { (DocumentSnapshot, error) in
+            if let error = error {
+                print("Error: \(error)")
+            } else {
+                self.requestedCenterName.text = DocumentSnapshot?.get("selectedCenter") as? String
+            }
+        }
+        
     }
     
     @IBAction func acceptRequestButtonTapped() {
-            //GET DONATOR DATA
+            //DONATOR DATA
             db.collection("users").document(userUID).getDocument { (document, error) in
             if let document = document, document.exists{
                 self.donatorName = document.get("name") as? String
@@ -64,6 +76,28 @@ class AcceptDonationViewController: UIViewController {
                 print("Document successfully removed!")
             }
         }
+        
+        //RECEIVER DATA
+        self.db.collection("users").document(getReceiverUID).collection("OpenDonationsReceiver").addDocument(data: [
+            "donatorBloodTypeCode": self.donatorBloodTypeCode as Int,
+            "donatorName": self.donatorName as String,
+            "donatorUID": self.userUID as String,
+            "receiverBloodTypeCode": self.getReceiverBloodTypeCode as Int,
+            "receiverName": self.getReceiverName as String,
+            "receiverUID": self.getReceiverUID as String,
+            "isDone": false as Bool
+            ])
     }
+    
+    @IBAction func refuseRequestButtonTapped() {
+        self.db.collection("users").document(self.userUID).collection("ReceiversRequest").document(getReceiverUID).delete() { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
+            }
+        }
+    }
+    
     
 }

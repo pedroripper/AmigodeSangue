@@ -12,7 +12,7 @@ import FirebaseFirestore
 import Firebase
 import JGProgressHUD
 
-class RequestDonationViewController: UIViewController{
+class RequestDonationViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     
   
@@ -26,11 +26,10 @@ class RequestDonationViewController: UIViewController{
     var getDonatorWannaDonate = Bool()
     
     //Centers
-    var centersArray = [center]()
-    var centersNames: [String]?
+    let centerNames = ["Selecionar","Hemorio - Centro","Banco de Sangue Serum","Santa Casa de Misericórdia"]
     @IBOutlet var centerPicker: UITextField!
     let centersPicker = UIPickerView()
-    var selectedCenter: String?
+    var selectedCenter: String = ""
     
     
     @IBOutlet var donatorNameLabel: UILabel!
@@ -46,22 +45,8 @@ class RequestDonationViewController: UIViewController{
         super.viewDidLoad()
         userData()
         loadData()
-     //   loadCenters()
     }
- /*
-    func loadCenters(){
-        db.collection("centers").getDocuments { (QuerySnapshot, error) in
-            if let error = error{
-                print("\(error.localizedDescription)")
-            } else {
-                self.centersArray = QuerySnapshot!.documents.compactMap({center(centerDictionary:$0.data())})
-                DispatchQueue.main.async {
-                    self.centersNames = centersArray.
-                }
-            }
-        }
-    }
-    */
+    
     func userData(){
         db.collection("users").document(userUID).getDocument { (document, error) in
         if let document = document, document.exists{
@@ -71,14 +56,10 @@ class RequestDonationViewController: UIViewController{
             }
         }
     }
-    
 
-    
-    
-    
     func loadData(){
-        donatorNameLabel.text = getDonatorName
-        donatorBloodTypeLabel.text = getDonatorBloodType
+        self.donatorNameLabel.text = self.getDonatorName
+        self.donatorBloodTypeLabel.text = self.getDonatorBloodType
         if getDonatorWannaDonate == false{
             donatorStatsOkLabel.textColor = UIColor.red
             donatorStatsOkLabel.text = "Doador não está apto."
@@ -88,39 +69,37 @@ class RequestDonationViewController: UIViewController{
         }
     }
     
+    func createCentersPicker(){
+        centersPicker.delegate = self
+        self.centerPicker.inputView = centersPicker
+    }
+    
     
     @IBAction func askDonationButtonTapped() {
-       
-        /*db.collection("users").document("\(getDonatorUID)").collection("ReceiversRequest").addDocument(data: [
-            "receiverUID": userUID,
-            "donatorUID": getDonatorUID,
-            "receiverBloodTypeCode": userBloodTypecode as Any,
-            "donatorBloodTypeCode": getDonatorBloodTypeCode,
-            "donatorName": getDonatorName,
-            "receiverName": username as Any
-            ])*/
         db.collection("users").document("\(getDonatorUID)").collection("ReceiversRequest").document(userUID).setData( [
             "receiverUID": userUID,
             "donatorUID": getDonatorUID,
             "receiverBloodTypeCode": userBloodTypecode as Any,
             "donatorBloodTypeCode": getDonatorBloodTypeCode,
             "donatorName": getDonatorName,
-            "receiverName": username as Any
+            "receiverName": username as Any,
+            "selectedCenter": selectedCenter
             ])
         self.requestSentLabel.text = "Pedido Enviado!"
     }
-    /*
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return centersArray.count
+        return centerNames.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-       // return centersArray[index]
+        return centerNames[row]
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-       
-    }*/
+        selectedCenter = centerNames[row]
+        self.centerPicker.text = selectedCenter
+    }
     
 }

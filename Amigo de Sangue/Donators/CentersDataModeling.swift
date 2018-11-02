@@ -10,7 +10,7 @@ import Foundation
 import FirebaseFirestore
 
 protocol CentersDocument {
-    init?(centerDictionary:[String:Any])
+    init?(dictionary:[String:Any])
 }
 
 struct center {
@@ -31,11 +31,11 @@ struct center {
 
 
 extension center : CentersDocument{
-    init?(centerDictionary: [String : Any]) {
-        guard let centerName = centerDictionary["centerName"] as? String,
-        let centerAdress = centerDictionary["centerAdress"] as? String,
-        let centerCEP = centerDictionary["centerDictionary"] as? Int,
-        let centerNeighbourhood = centerDictionary["centerNeighbourhood"] as? String
+    init?(dictionary: [String : Any]) {
+        guard let centerName = dictionary["centerName"] as? String,
+        let centerAdress = dictionary["centerAdress"] as? String,
+        let centerCEP = dictionary["centerDictionary"] as? Int,
+        let centerNeighbourhood = dictionary["centerNeighbourhood"] as? String
             else {return nil}
         
         self.init(centerName: centerName, centerAdress: centerAdress, centerCEP: centerCEP, centerNeighbourhood: centerNeighbourhood)
