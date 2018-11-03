@@ -16,17 +16,13 @@ class OpenDonationDonatorViewController: UIViewController {
     var db: Firestore = Firestore.firestore()
     let userUID: String = Auth.auth().currentUser!.uid as String
     
+    
     //RECEIVER DATA
-    var getReceiverName = String()
-    var getReceiverBloodType = String()
-    var getReceiverBloodTypeCode = Int()
     var getReceiverUID = String()
     
-    var donatorName: String!
-    var donatorBloodTypeCode: Int!
+    var receiverBloodTypeCode: Int!
     
     @IBOutlet var receiverNameLabel: UILabel!
-    
     @IBOutlet var receiverBloodTypeLabel: UILabel!
     
     override func viewDidLoad() {
@@ -35,14 +31,91 @@ class OpenDonationDonatorViewController: UIViewController {
     }
         
     func loadData(){
-
-        print(getReceiverName)
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Carregando"
+        hud.show(in: self.view)
+        db.collection("users").document(userUID).collection("OpenDonationsDonator").document("\(getReceiverUID)").getDocument { (document, error) in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            } else {
+                self.receiverNameLabel.text = document?.get("receiverName") as? String
+                self.receiverBloodTypeCode = document?.get("receiverBloodTypeCode") as? Int
+                self.receiverBloodTypeLabel.text = self.bloodTypeDecoder(code: self.receiverBloodTypeCode)
+                hud.dismiss(afterDelay: 0.0)
+            }
+        }
+        
     }
     
     @IBAction func openChatButtonTapped() {
         
     }
     
-       
+    @IBAction func cancelDonationButtonTapped() {
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Carregando"
+        hud.show(in: self.view)
+        self.db.collection("users").document("\(self.userUID)").collection("OpenDonationsDonator").document("\(getReceiverUID)").delete() { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
+            }
+        }
+        self.db.collection("users").document("\(getReceiverUID)").collection("OpenDonationsReceiver").document("\(userUID)").setData([
+            "isCancelled" : true as Bool
+            ], merge: true)
+        hud.dismiss(afterDelay: 0.0)
+
+    }
+    @IBAction func donationCompletedButtonTapped() {
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Carregando"
+        hud.show(in: self.view)
+        self.db.collection("users").document("\(self.userUID)").collection("OpenDonationsDonator").document("\(getReceiverUID)").delete() { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
+            }
+        }
+        self.db.collection("users").document("\(getReceiverUID)").collection("OpenDonationsReceiver").document("\(userUID)").setData([
+            "isDone" : true as Bool
+            ], merge: true)
+        hud.dismiss(afterDelay: 0.0)
+    }
+    
+    
+    //CONVERT BLOODTYPE CODE TO STRING
+    func bloodTypeDecoder(code: Int?) -> String?{
+        let btCD = code
+        var decode: String?
+        if btCD == 11{
+            decode = "A+"
+        }
+        if btCD == 10{
+            decode = "A-"
+        }
+        if btCD == 21{
+            decode = "B+"
+        }
+        if btCD == 20{
+            decode = "B-"
+        }
+        if btCD == 31{
+            decode = "AB+"
+        }
+        if btCD == 30{
+            decode = "AB-"
+        }
+        if btCD == 41{
+            decode = "O+"
+        }
+        if btCD == 40{
+            decode = "O-"
+        }
+        return decode
+    }
+    
     
 }

@@ -160,7 +160,7 @@ class AmigosViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0{
+        if indexPath.section == 0 {
             let requesters = requestsArray[indexPath.row]
             let StoryBoard = UIStoryboard(name: "Main", bundle: nil)
             let DestinatedVC = StoryBoard.instantiateViewController(withIdentifier: "AcceptDonationViewController") as! AcceptDonationViewController
@@ -169,6 +169,21 @@ class AmigosViewController: UITableViewController {
             DestinatedVC.getReceiverBloodTypeCode = requesters.receiverBloodTypeCode
             DestinatedVC.getReceiverBloodType = self.receiverBloodType
             self.navigationController?.pushViewController(DestinatedVC, animated: false)
+        }
+        if indexPath.section == 1 {
+            let donators = openReceiversArray[indexPath.row]
+            let Storyboard = UIStoryboard(name: "main", bundle: nil)
+            let DestinatedVC = Storyboard.instantiateViewController(withIdentifier: "OpenDonationReceiverViewController") as! OpenDonationReceiverViewController
+            DestinatedVC.getDonatorUID = donators.donatorUID
+            self.navigationController?.pushViewController(DestinatedVC, animated: false)
+        }
+        if indexPath.section == 2 {
+            let receivers = openReceiversArray[indexPath.row]
+            let Storyboard = UIStoryboard(name: "main", bundle: nil)
+            let DestinatedVC = Storyboard.instantiateViewController(withIdentifier: "OpenDonationDonatorViewController") as! OpenDonationDonatorViewController
+            DestinatedVC.getReceiverUID = receivers.receiverUID
+            self.navigationController?.pushViewController(DestinatedVC, animated: false)
+            
         }
     }
     

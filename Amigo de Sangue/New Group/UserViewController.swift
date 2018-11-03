@@ -27,7 +27,6 @@ class UserViewController: UIViewController {
     }
     
     func setUpViewController(){
-        
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "Carregando"
         hud.show(in: self.view)
@@ -42,38 +41,9 @@ class UserViewController: UIViewController {
                 hud.dismiss(afterDelay: 0.0)
             }
             else { print("shit data")}
-            
         }
-        
     }
-    
-   /* func setUpNavController(){
-        //Logout Button
-        let logOutButtonImage = UIImageView(image:UIImage(named: "logout"))
-        let logOutButton = UIButton(type: .system)
-        logOutButton.setImage(logOutButtonImage.image, for: .normal)
-        logOutButtonImage.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: logOutButton)
-        
-        let logoutRecognizer = UITapGestureRecognizer(target: self, action: #selector(UserViewController.lougoutButtonTapped))
-        logOutButton.isUserInteractionEnabled = true
-        logOutButton.addGestureRecognizer(logoutRecognizer)
-        
-        //User Configurations Button
-        let confUserButtonImage = UIImageView(image: UIImage(named: "settings"))
-        let confUserButton = UIButton(type: .system)
-        confUserButton.setImage(confUserButtonImage.image, for: .normal)
-        confUserButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: confUserButton)
-        
-        let configRecognizer = UITapGestureRecognizer(target: self, action: #selector(UserViewController.confUserButtonTapped))
-        confUserButton.isUserInteractionEnabled = true
-        confUserButton.addGestureRecognizer(configRecognizer)
-        
-        
-    }*/
-    
-    
+
     @IBAction func logOutButtonTapped() {
         try! Auth.auth().signOut()
         dismiss(animated: true, completion: nil)
@@ -115,8 +85,4 @@ class UserViewController: UIViewController {
             db.collection("users").document(userUID).setData(["wantToContribute" : false], merge: true)
         }
     }
-    
-    
-    
-
 }

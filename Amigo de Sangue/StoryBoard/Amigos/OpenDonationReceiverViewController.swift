@@ -10,25 +10,75 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 import FirebaseAuth
+import JGProgressHUD
 
 
 class OpenDonationReceiverViewController: UIViewController {
     var db: Firestore = Firestore.firestore()
     let userUID: String = Auth.auth().currentUser!.uid as String
     
+    //DONATOR DATA
+    var getDonatorUID = String()
+    
     @IBOutlet weak var donatorNameTextField: UILabel!
     @IBOutlet weak var donatorBloodTextField: UILabel!
     @IBOutlet weak var requestedCenterName: UILabel!
+    var donatorBloodTypeCode: Int?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadData()
     }
     
     func loadData(){
-        self.db.collection("users").document(userUID).collection("OpenDonationsReceiver").document()
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Carregando"
+        hud.show(in: self.view)
+        self.db.collection("users").document(userUID).collection("OpenDonationsReceiver").document("\(getDonatorUID)").getDocument { (document, error) in
+            if let error =  error {
+                print("Error: \(error.localizedDescription)")
+            } else {
+                self.donatorNameTextField.text = document?.get("donatorName") as? String
+                self.donatorBloodTypeCode = document?.get("donatorBloodTypeCode") as? Int
+                self.donatorBloodTextField.text = self.bloodTypeDecoder(code: self.donatorBloodTypeCode)
+                hud.dismiss(afterDelay: 0.0)
+            }
+        }
     }
     
+    
+    //CONVERT BLOODTYPE CODE TO STRING
+    func bloodTypeDecoder(code: Int?) -> String?{
+        let btCD = code
+        var decode: String?
+        if btCD == 11{
+            decode = "A+"
+        }
+        if btCD == 10{
+            decode = "A-"
+        }
+        if btCD == 21{
+            decode = "B+"
+        }
+        if btCD == 20{
+            decode = "B-"
+        }
+        if btCD == 31{
+            decode = "AB+"
+        }
+        if btCD == 30{
+            decode = "AB-"
+        }
+        if btCD == 41{
+            decode = "O+"
+        }
+        if btCD == 40{
+            decode = "O-"
+        }
+        return decode
+    }
+
     
     
 

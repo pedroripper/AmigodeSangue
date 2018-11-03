@@ -220,7 +220,7 @@
         <!--Open Donation Receiver View Controller-->
         <scene sceneID="O5o-bj-Byf">
             <objects>
-                <viewController id="UmV-Pw-MYC" customClass="OpenDonationReceiverViewController" customModule="Amigo_de_Sangue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OpenDonationReceiverViewController" id="UmV-Pw-MYC" customClass="OpenDonationReceiverViewController" customModule="Amigo_de_Sangue" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DPM-yT-DwF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -752,7 +752,7 @@
         <!--Open Donation Donator View Controller-->
         <scene sceneID="v7v-kP-Bih">
             <objects>
-                <viewController id="cyh-FL-YmY" customClass="OpenDonationDonatorViewController" customModule="Amigo_de_Sangue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OpenDonationDonatorViewController" id="cyh-FL-YmY" customClass="OpenDonationDonatorViewController" customModule="Amigo_de_Sangue" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZhH-uP-jyd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -787,6 +787,9 @@
                                 <rect key="frame" x="95" y="586" width="186" height="61"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="CancelDonation"/>
+                                <connections>
+                                    <action selector="cancelDonationButtonTapped" destination="cyh-FL-YmY" eventType="touchUpInside" id="7tx-En-KDk"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PlaceBox" translatesAutoresizingMaskIntoConstraints="NO" id="zBB-DP-i2N">
                                 <rect key="frame" x="0.0" y="241" width="375" height="164"/>
@@ -796,6 +799,9 @@
                                 <rect key="frame" x="94" y="449" width="186" height="61"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="DoneDonation"/>
+                                <connections>
+                                    <action selector="donationCompletedButtonTapped" destination="cyh-FL-YmY" eventType="touchUpInside" id="peH-xL-hbm"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1iy-Q7-o1r">
                                 <rect key="frame" x="90" y="266" width="246" height="33"/>
