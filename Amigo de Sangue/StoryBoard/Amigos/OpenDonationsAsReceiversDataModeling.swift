@@ -21,6 +21,7 @@ struct OpenReceiverCell {
     var receiverName: String
     var receiverUID: String
     var isDone: Bool
+    var isCancelled: Bool
     
     var openDonationsReceiverDictionary: [String:Any]{
         return [
@@ -30,7 +31,8 @@ struct OpenReceiverCell {
             "receiverBloodTypeCode": receiverBloodTypeCode,
             "receiverName": receiverName,
             "receiverUID": receiverUID,
-            "isDone": isDone
+            "isDone": isDone,
+            "isCancelled": isCancelled
         ]
     }
 }
@@ -42,8 +44,9 @@ extension OpenReceiverCell: OpenDonationsReceiverDocument {
             let receiverBloodTypeCode = openDonationsReceiverDictionary["receiverBloodTypeCode"] as? Int,
             let receiverName = openDonationsReceiverDictionary["receiverName"] as? String,
             let receiverUID = openDonationsReceiverDictionary["receiverUID"] as? String ,
-            let isDone = openDonationsReceiverDictionary["isDone"] as? Bool else {return nil}
-        self.init(donatorBloodTypeCode: donatorBloodTypeCode, donatorName: donatorName, donatorUID: donatorUID, receiverBloodTypeCode: receiverBloodTypeCode, receiverName: receiverName, receiverUID: receiverUID, isDone: isDone)
+            let isDone = openDonationsReceiverDictionary["isDone"] as? Bool,
+            let isCancelled = openDonationsReceiverDictionary["isCancelled"] as? Bool else {return nil}
+        self.init(donatorBloodTypeCode: donatorBloodTypeCode, donatorName: donatorName, donatorUID: donatorUID, receiverBloodTypeCode: receiverBloodTypeCode, receiverName: receiverName, receiverUID: receiverUID, isDone: isDone, isCancelled: isCancelled)
     }
 }
 

@@ -24,11 +24,18 @@ class OpenDonationReceiverViewController: UIViewController {
     @IBOutlet weak var donatorBloodTextField: UILabel!
     @IBOutlet weak var requestedCenterName: UILabel!
     var donatorBloodTypeCode: Int?
+    var isDonationCancelled: Bool?
+    var isDonationCompleted: Bool?
     
+    
+    @IBOutlet var donationStatusLabel: UILabel!
+    
+    @IBOutlet var eraseButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
+        self.eraseButton.isHidden = true
     }
     
     func loadData(){
@@ -42,9 +49,38 @@ class OpenDonationReceiverViewController: UIViewController {
                 self.donatorNameTextField.text = document?.get("donatorName") as? String
                 self.donatorBloodTypeCode = document?.get("donatorBloodTypeCode") as? Int
                 self.donatorBloodTextField.text = self.bloodTypeDecoder(code: self.donatorBloodTypeCode)
+                self.requestedCenterName.text = document?.get("selectedCenter") as? String
+                self.isDonationCancelled = document?.get("isCancelled") as? Bool
+                self.isDonationCompleted = document?.get("isDone") as? Bool
                 hud.dismiss(afterDelay: 0.0)
+                self.checkForDonationStatus()
             }
         }
+    }
+    
+    func checkForDonationStatus(){
+        if self.isDonationCancelled == true {
+            self.donationStatusLabel.textColor = UIColor.red
+            self.donationStatusLabel.text = "A doaçāo foi cancelada..."
+            self.eraseButton.isHidden = false
+        }
+        if self.isDonationCompleted == true {
+            self.donationStatusLabel.textColor = UIColor.green
+            self.donationStatusLabel.text = "A doaçāo foi realizada! \nVocê agora pode apagá-la da sua caixa de doações."
+            self.eraseButton.isHidden = false
+        }
+    }
+    
+    
+    @IBAction func eraseDonationButtonTapped() {
+        self.db.collection("users").document("\(userUID)").collection("OpenDonationsReceiver").document("\(getDonatorUID)").delete() { error in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            } else {
+                print("Document deleted")
+            }
+        }
+        dismiss(animated: true, completion: nil)
     }
     
     

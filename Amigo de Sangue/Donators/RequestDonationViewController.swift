@@ -45,6 +45,8 @@ class RequestDonationViewController: UIViewController, UIPickerViewDelegate, UIP
         super.viewDidLoad()
         userData()
         loadData()
+        createCentersPicker()
+        createToolBar()
     }
     
     func userData(){
@@ -83,9 +85,22 @@ class RequestDonationViewController: UIViewController, UIPickerViewDelegate, UIP
             "donatorBloodTypeCode": getDonatorBloodTypeCode,
             "donatorName": getDonatorName,
             "receiverName": username as Any,
-            "selectedCenter": selectedCenter
+            "selectedCenter": centerPicker.text!
             ])
         self.requestSentLabel.text = "Pedido Enviado!"
+    }
+    
+    func createToolBar(){
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(SignUpViewController.dismissKeyboard))
+        toolBar.setItems([doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        self.centerPicker.inputAccessoryView = toolBar
+    }
+    @objc func dismissKeyboard(){
+        view.endEditing(true)
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

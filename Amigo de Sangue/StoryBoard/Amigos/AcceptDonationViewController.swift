@@ -63,18 +63,20 @@ class AcceptDonationViewController: UIViewController {
             if let document = document, document.exists{
                 self.donatorName = document.get("name") as? String
                 self.donatorBloodTypeCode = document.get("bloodTypeCode") as? Int
-            }
+            
             //STORE DONATION INFO FOR DONATOR
-            self.db.collection("users").document(self.userUID).collection("OpenDonationsDonator").document("\(self.getReceiverUID)").setData(["donatorBloodTypeCode": self.donatorBloodTypeCode as Int,
+            self.db.collection("users").document(self.userUID).collection("OpenDonationsDonator").document("\(self.getReceiverUID)").setData([
+                "donatorBloodTypeCode": self.donatorBloodTypeCode as Int,
                 "donatorName": self.donatorName as String,
                 "donatorUID": self.userUID as String,
                 "receiverBloodTypeCode": self.getReceiverBloodTypeCode as Int,
                 "receiverName": self.getReceiverName as String,
                 "receiverUID": self.getReceiverUID as String,
-                "isDone": false as Bool
+                "isDone": false as Bool,
+                "selectedCenter": self.requestedCenterName.text ?? " -- "
                 ])
     }
-        self.db.collection("users").document(self.userUID).collection("ReceiversRequest").document("\(getReceiverUID)").delete() { err in
+                self.db.collection("users").document(self.userUID).collection("ReceiversRequest").document("\(self.getReceiverUID)").delete() { err in
             if let err = err {
                 print("Error removing document: \(err)")
             } else {
@@ -83,7 +85,7 @@ class AcceptDonationViewController: UIViewController {
         }
         
         //STORE DONATION INFO FOR RECEIVER
-        self.db.collection("users").document(getReceiverUID).collection("OpenDonationsReceiver").document("\(userUID)").setData([
+            self.db.collection("users").document(self.getReceiverUID).collection("OpenDonationsReceiver").document("\(self.userUID)").setData([
             "donatorBloodTypeCode": self.donatorBloodTypeCode as Int,
             "donatorName": self.donatorName as String,
             "donatorUID": self.userUID as String,
@@ -91,10 +93,11 @@ class AcceptDonationViewController: UIViewController {
             "receiverName": self.getReceiverName as String,
             "receiverUID": self.getReceiverUID as String,
             "isDone": false as Bool,
-            "isCancelled": false as Bool
+            "isCancelled": false as Bool,
+            "selectedCenter": self.requestedCenterName.text ?? " -- "
             ])
         hud.dismiss(afterDelay: 0.0)
-
+        }
     }
     
     @IBAction func refuseRequestButtonTapped() {

@@ -10,7 +10,6 @@ target 'Amigo de Sangue' do
 	pod 'Firebase/Firestore'
 	pod 'TextFieldEffects'
 	pod 'JGProgressHUD'	
-	pod 'MessageKit'
 
 
   # Pods for Amigo de Sangue

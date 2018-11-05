@@ -56,7 +56,7 @@ class DonatorViewController: UITableViewController {
     }
     
     func setUpNavController(){
-        let logOutButtonImage = UIImageView(image:UIImage(named: "logout"))
+        let logOutButtonImage = UIImageView(image:UIImage(named: "log-out"))
         let logOutButton = UIButton(type: .system)
         logOutButton.setImage(logOutButtonImage.image, for: .normal)
         logOutButtonImage.frame = CGRect(x: 0, y: 0, width: 33, height: 33)

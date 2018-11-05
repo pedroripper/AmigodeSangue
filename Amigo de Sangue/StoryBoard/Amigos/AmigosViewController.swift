@@ -33,13 +33,13 @@ class AmigosViewController: UITableViewController {
         super.viewDidLoad()
         setUpNavController()
         loadRequestsData()
-       // loadOpenDonationsDONATOR()
-        //loadOpenDonationsRECEIVER()
+        loadOpenDonationsDONATOR()
+        loadOpenDonationsRECEIVER()
     }
     
     //LOAD NAVIGATION CONTROLLER
     func setUpNavController(){
-        let logOutButtonImage = UIImageView(image:UIImage(named: "logout"))
+        let logOutButtonImage = UIImageView(image:UIImage(named: "log-out"))
         let logOutButton = UIButton(type: .system)
         logOutButton.setImage(logOutButtonImage.image, for: .normal)
         logOutButtonImage.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
@@ -160,29 +160,34 @@ class AmigosViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let StoryBoard = UIStoryboard(name: "Main", bundle: nil)
+        //BLOOD TRANSFUSION REQUESTS FOR DONATORS
         if indexPath.section == 0 {
             let requesters = requestsArray[indexPath.row]
-            let StoryBoard = UIStoryboard(name: "Main", bundle: nil)
-            let DestinatedVC = StoryBoard.instantiateViewController(withIdentifier: "AcceptDonationViewController") as! AcceptDonationViewController
-            DestinatedVC.getReceiverName = requesters.receiverName
-            DestinatedVC.getReceiverUID = requesters.receiverUID
-            DestinatedVC.getReceiverBloodTypeCode = requesters.receiverBloodTypeCode
-            DestinatedVC.getReceiverBloodType = self.receiverBloodType
-            self.navigationController?.pushViewController(DestinatedVC, animated: false)
+            let RequestsVC = StoryBoard.instantiateViewController(withIdentifier: "AcceptDonationViewController") as! AcceptDonationViewController
+            RequestsVC.getReceiverName = requesters.receiverName
+            RequestsVC.getReceiverUID = requesters.receiverUID
+            RequestsVC.getReceiverBloodTypeCode = requesters.receiverBloodTypeCode
+            RequestsVC.getReceiverBloodType = self.receiverBloodType
+            self.navigationController?.pushViewController(RequestsVC, animated: false)
         }
+        //BLOOD TRANSFUSIONS IN PROCESS FOR RECEIVERS
         if indexPath.section == 1 {
             let donators = openReceiversArray[indexPath.row]
-            let Storyboard = UIStoryboard(name: "main", bundle: nil)
-            let DestinatedVC = Storyboard.instantiateViewController(withIdentifier: "OpenDonationReceiverViewController") as! OpenDonationReceiverViewController
-            DestinatedVC.getDonatorUID = donators.donatorUID
-            self.navigationController?.pushViewController(DestinatedVC, animated: false)
+            let DonationsReceiverVC = StoryBoard.instantiateViewController(withIdentifier: "OpenDonationReceiverViewController") as! OpenDonationReceiverViewController
+            DonationsReceiverVC.getDonatorUID = donators.donatorUID
+            self.navigationController?.pushViewController(DonationsReceiverVC, animated: false)
         }
+        //BLOOD TRANSFUSIONS IN PROCESS FOR DONATORS
         if indexPath.section == 2 {
-            let receivers = openReceiversArray[indexPath.row]
-            let Storyboard = UIStoryboard(name: "main", bundle: nil)
-            let DestinatedVC = Storyboard.instantiateViewController(withIdentifier: "OpenDonationDonatorViewController") as! OpenDonationDonatorViewController
-            DestinatedVC.getReceiverUID = receivers.receiverUID
-            self.navigationController?.pushViewController(DestinatedVC, animated: false)
+            print("click")
+            let receivers = openDonatorsArray[indexPath.row]
+            print("RECIVERS: \(receivers)")
+            print("RECIVERS: \(receivers)")
+            let DonationsDonatorVC = StoryBoard  .instantiateViewController(withIdentifier: "OpenDonationDonatorViewController") as! OpenDonationDonatorViewController
+            DonationsDonatorVC.getReceiverUID = receivers.receiverUID
+            print("\(DonationsDonatorVC.getReceiverUID)")
+            self.navigationController?.pushViewController(DonationsDonatorVC, animated: false)
             
         }
     }
@@ -201,7 +206,7 @@ class AmigosViewController: UITableViewController {
             headerLabel.text = "Meus Pedidos de Doação"
         }
         if section == 2 {
-            headerLabel.text = "Minhas Doações"
+            headerLabel.text = "Doações para eu fazer"
         }
         return headerLabel
     }
@@ -227,19 +232,18 @@ class AmigosViewController: UITableViewController {
             self.receiverBloodType = bloodTypeDecoder(code: requesters.receiverBloodTypeCode)!
             cell.textLabel?.text = "\(requesters.receiverName)"
             cell.detailTextLabel?.text = "Sangue: \(receiverBloodType)"
-        print("got THis far cellllllllll")
             return cell
         }
        if indexPath.section == 1{
             let openReceivers = openReceiversArray[indexPath.row]
-            self.receiverBloodType = bloodTypeDecoder(code: openReceivers.receiverBloodTypeCode)!
+            self.donatorBloodType = bloodTypeDecoder(code: openReceivers.donatorBloodTypeCode)!
             cell.textLabel?.text = "\(openReceivers.donatorName)"
-            cell.detailTextLabel?.text = "Sangue: \(openReceivers.donatorName)"
+            cell.detailTextLabel?.text = "Sangue: \(donatorBloodType)"
             return cell
         }
         else{
             let openDonators = openDonatorsArray[indexPath.row]
-            self.donatorBloodType = bloodTypeDecoder(code: openDonators.donatorBloodTypeCode)!
+            self.receiverBloodType = bloodTypeDecoder(code: openDonators.receiverBloodTypeCode)!
             cell.textLabel?.text = "\(openDonators.receiverName)"
             cell.detailTextLabel?.text = "Sangue: \(receiverBloodType)"
             return cell

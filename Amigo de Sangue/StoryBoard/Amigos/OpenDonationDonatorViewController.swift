@@ -24,6 +24,7 @@ class OpenDonationDonatorViewController: UIViewController {
     
     @IBOutlet var receiverNameLabel: UILabel!
     @IBOutlet var receiverBloodTypeLabel: UILabel!
+    @IBOutlet var centerNameLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,7 @@ class OpenDonationDonatorViewController: UIViewController {
             if let error = error {
                 print("Error: \(error.localizedDescription)")
             } else {
+                self.centerNameLabel.text = document?.get("selectedCenter") as? String
                 self.receiverNameLabel.text = document?.get("receiverName") as? String
                 self.receiverBloodTypeCode = document?.get("receiverBloodTypeCode") as? Int
                 self.receiverBloodTypeLabel.text = self.bloodTypeDecoder(code: self.receiverBloodTypeCode)
@@ -47,10 +49,7 @@ class OpenDonationDonatorViewController: UIViewController {
         
     }
     
-    @IBAction func openChatButtonTapped() {
-        
-    }
-    
+   
     @IBAction func cancelDonationButtonTapped() {
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "Carregando"
