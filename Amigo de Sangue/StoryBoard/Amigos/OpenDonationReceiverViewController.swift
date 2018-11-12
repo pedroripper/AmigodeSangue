@@ -80,8 +80,7 @@ class OpenDonationReceiverViewController: UIViewController {
                 print("Document deleted")
             }
         }
-        dismiss(animated: true, completion: nil)
-    }
+        }
     
     
     //CONVERT BLOODTYPE CODE TO STRING
