@@ -20,6 +20,7 @@ struct DonatorCell {
     var userId: String
     var wantToContribute: Bool
     var userUID: String
+    var canDonateTo: [Int]
     
     var dictionary: [String:Any]{
        return [
@@ -28,7 +29,8 @@ struct DonatorCell {
       //  "gender": gender,
         "userId": userId,
         "wantToContribute": wantToContribute,
-        "userUID": userUID
+        "userUID": userUID,
+        "canDonateTo": canDonateTo
             ]
     }
 }
@@ -39,8 +41,9 @@ extension DonatorCell: Document {
         //    let gender = dictionary["gender"] as? String,
             let userId = dictionary["userId"] as? String,
             let wantToContribute = dictionary["wantToContribute"] as? Bool,
-            let userUID = dictionary["userUID"] as? String else {return nil}
-        self.init(name: name, bloodTypeCode: bloodTypeCode, userId: userId, wantToContribute: wantToContribute, userUID: userUID)
+            let userUID = dictionary["userUID"] as? String ,
+            let canDonateTo = dictionary["canDonateTo"] as? [Int] else {return nil}
+        self.init(name: name, bloodTypeCode: bloodTypeCode, userId: userId, wantToContribute: wantToContribute, userUID: userUID, canDonateTo: canDonateTo)
     }
 }
 

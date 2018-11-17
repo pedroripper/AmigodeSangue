@@ -27,6 +27,7 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     let bloodTypes = ["Selecionar","A+","A-","B+","B-","AB+","AB-","O+","O-"]
     var selectedBloodType: String?
     var bloodTypecd: Int?
+    var canDonateTo: [Int] = []
     
     let genderTypePicker = UIPickerView()
     let genderTypes = ["Selecionar","Homem","Mulher","Outro"]
@@ -55,19 +56,25 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         //CHECK IF ANYTHING IS IN BLANK
         if emailTextField.text != "" && passwordTextField.text != "" && userIdTextField.text != "" && userIdTextField.text != "" && bloodTypeTextField.text != ""{
             Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
-                if user != nil{
+                if let error = error {
+                    print("ERROR CREATING USER:")
+                    print(error.localizedDescription)
+                } else {
                     saveUserInfo()
+                    print(self.bloodTypeTextField.text as Any)
                     hud.dismiss(afterDelay: 0.0)
                     self.performSegue(withIdentifier: "signUpSegue", sender: self)
                     self.emailTextField.text = ""
                     self.passwordTextField.text = ""
-                    self.bloodTypeTextField.text = ""
                     self.userIdTextField.text = ""
-                    }else {}}
-            }
+                    print("USER SAVED SUCCESSFULLY")
+                }
+            }}
         //SAVE USER TO DATABASE
         func saveUserInfo(){
             bloodTypeCode()
+            canDonateTo = donations()
+            print(canDonateTo)
             let user =  Auth.auth().currentUser
             if user != nil {
                 let userUID = user?.uid
@@ -79,13 +86,15 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                     "bloodTypeCode": bloodTypecd as Any,
                    // "gender": selectedGender as Any,
                     "wantToContribute": true,
-                    "userUID": userUID as Any
+                    "userUID": userUID as Any,
+                    "canDonateTo": canDonateTo as Array
                     ])
                     { err in
                     if let err = err {
                         print("Error writing document: \(err)")} else {print("Document successfully written!")}
                     }
             }
+            self.bloodTypeTextField.text = ""
         }
         }
     
@@ -142,6 +151,32 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }
         if selectedBloodType == "O-"{
             bloodTypecd = 40
+        }
+    }
+    func donations()  -> [Int]{
+        if bloodTypecd == 11 {
+            return [11,31]
+        }
+        if bloodTypecd == 10 {
+            return [10,30]
+        }
+        if bloodTypecd == 21 {
+            return [21,31]
+        }
+        if bloodTypecd == 20 {
+            return [20,30]
+        }
+        if bloodTypecd == 31 {
+            return [31]
+        }
+        if bloodTypecd == 30 {
+            return [31,30]
+        }
+        if bloodTypecd == 41 {
+            return [11,21,31,41]
+        }
+        else{
+            return [11,10,21,20,31,30,41,40]
         }
     }
     
