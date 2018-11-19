@@ -20,7 +20,6 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var bloodTypeTextField: UITextField!
-    @IBOutlet var genderTextField: UITextField!
     @IBOutlet var birthDateTextField: UITextField!
     
     let bloodTypePicker = UIPickerView()
@@ -28,24 +27,26 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     var selectedBloodType: String?
     var bloodTypecd: Int?
     var canDonateTo: [Int] = []
-    
-    let genderTypePicker = UIPickerView()
-    let genderTypes = ["Selecionar","Homem","Mulher","Outro"]
-    var selectedGender: String?
-    let birthDayPicker = UIDatePicker()
+    /*
+     let genderTypePicker = UIPickerView()
+     let genderTypes = ["Selecionar","Homem","Mulher","Outro"]
+     var selectedGender: String? */
+    let datePicker: UIDatePicker = UIDatePicker()
     var selectedDate: String?
+    var birthDayDate: NSDate?
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        createBloodTypePicker()
-        createToolBar()
+        createPickers()
+        configureTextFields()
         
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings
         db = Firestore.firestore()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -80,33 +81,36 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                 let userUID = user?.uid
                 guard let usernameText = self.usernameTextField.text, !usernameText.isEmpty else{return}
                 guard let userIdText = self.userIdTextField.text, !userIdText.isEmpty else{return}
-                    db.collection("users").document(userUID!).setData([
+                
+                db.collection("users").document(userUID!).setData([
                     "name": usernameText,
                     "userId": userIdText,
                     "bloodTypeCode": bloodTypecd as Any,
-                   // "gender": selectedGender as Any,
+                    // "gender": selectedGender as Any,
                     "wantToContribute": true,
                     "userUID": userUID as Any,
-                    "canDonateTo": canDonateTo as Array
+                    "canDonateTo": canDonateTo as Array,
+                    "numberOfDonations": 0,
+                    "birthDate": birthDayDate! as NSDate
                     ])
-                    { err in
+                { err in
                     if let err = err {
                         print("Error writing document: \(err)")} else {print("Document successfully written!")}
-                    }
+                }
             }
             self.bloodTypeTextField.text = ""
         }
-        }
+    }
     
     @IBAction func goBackButtonTapped() {
         dismiss(animated: false, completion: nil)
     }
     
-    func createToolBar(){
+    func configureTextFields(){
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
         
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(SignUpViewController.dismissKeyboard))
+        let doneButton = UIBarButtonItem(title: "Pronto", style: .plain, target: self, action: #selector(SignUpViewController.dismissKeyboard))
         toolBar.setItems([doneButton], animated: false)
         toolBar.isUserInteractionEnabled = true
         self.bloodTypeTextField.inputAccessoryView = toolBar
@@ -115,16 +119,35 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         self.passwordTextField.inputAccessoryView = toolBar
         self.usernameTextField.inputAccessoryView = toolBar
         self.birthDateTextField.inputAccessoryView = toolBar
-        self.genderTextField.inputAccessoryView = toolBar
+        //   self.genderTextField.inputAccessoryView = toolBar
+        
     }
     
     @objc func dismissKeyboard(){
         view.endEditing(true)
     }
     
-    func createBloodTypePicker(){
+    func createPickers(){
         bloodTypePicker.delegate = self
         self.bloodTypeTextField.inputView = bloodTypePicker
+        
+        self.datePicker.timeZone = NSTimeZone.local
+        self.birthDateTextField.inputView = datePicker
+        datePicker.datePickerMode = UIDatePicker.Mode.date
+        datePicker.addTarget(self, action: #selector(SignUpViewController.datePickerValueChanged(_:)), for: .valueChanged)
+    }
+
+        
+    
+    
+    @objc func datePickerValueChanged(_ sender: UIDatePicker){
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = NSTimeZone.default
+        dateFormatter.dateFormat =  "dd/MM/yyyy"
+        self.birthDayDate = dateFormatter.date(from: self.birthDateTextField.text!) as NSDate?
+        let selectedDate: String = dateFormatter.string(from: datePicker.date)
+        self.birthDateTextField.text = selectedDate
+
     }
     
     func bloodTypeCode(){
@@ -195,12 +218,12 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             selectedBloodType = bloodTypes[row]
             self.bloodTypeTextField.text = selectedBloodType
         }
-        if pickerView == genderTypePicker{
-            selectedGender = genderTypes[row]
-            self.genderTextField.text = selectedGender
-        }
+        /*  if pickerView == genderTypePicker{
+         selectedGender = genderTypes[row]
+         self.genderTextField.text = selectedGender
+         }*/
     }
-
+    
     
     
 }

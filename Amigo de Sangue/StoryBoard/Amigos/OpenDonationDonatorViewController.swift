@@ -13,9 +13,13 @@ import Firebase
 import JGProgressHUD
 
 class OpenDonationDonatorViewController: UIViewController {
+    let date = Date()
+    let calendar = Calendar.current
+    
     var db: Firestore = Firestore.firestore()
     let userUID: String = Auth.auth().currentUser!.uid as String
     
+    var numberOfDonations: Int = 0
     
     //RECEIVER DATA
     var getReceiverUID = String()
@@ -46,7 +50,11 @@ class OpenDonationDonatorViewController: UIViewController {
                 hud.dismiss(afterDelay: 0.0)
             }
         }
-        
+        self.db.collection("users").document("\(userUID)").getDocument { (document, error) in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            } else { self.numberOfDonations = document?.get("numberOfDonations") as! Int }
+        }
     }
     
    
@@ -71,6 +79,7 @@ class OpenDonationDonatorViewController: UIViewController {
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "Carregando"
         hud.show(in: self.view)
+        self.numberOfDonations += 1
         self.db.collection("users").document("\(self.userUID)").collection("OpenDonationsDonator").document("\(getReceiverUID)").delete() { err in
             if let err = err {
                 print("Error removing document: \(err)")
@@ -81,8 +90,14 @@ class OpenDonationDonatorViewController: UIViewController {
         self.db.collection("users").document("\(getReceiverUID)").collection("OpenDonationsReceiver").document("\(userUID)").setData([
             "isDone" : true as Bool
             ], merge: true)
+        self.db.collection("users").document("\(userUID)").setData([
+            "numberOfDonations": self.numberOfDonations,
+            "lastDonation": NSDate()
+            ], merge: true)
         hud.dismiss(afterDelay: 0.0)
+        
     }
+    
     
     
     //CONVERT BLOODTYPE CODE TO STRING

@@ -14,18 +14,22 @@ import JGProgressHUD
 class UserViewController: UIViewController {
     @IBOutlet var usernameLabel: UILabel!
     @IBOutlet var bloodTypeLabel: UILabel!
-    @IBOutlet var birthDate: UILabel!
     @IBOutlet var wannaDonateSwitch: UISwitch!
+    @IBOutlet var numberOfDonationsLabel: UILabel!
+    @IBOutlet var lastDonationDateLabel: UILabel!
+    @IBOutlet var birthdayDateLabel: UILabel!
     
     var bloodTypecd: Int?
     var db = Firestore.firestore()
     let userUID: String = Auth.auth().currentUser!.uid as String
     
+    var birthDate: Date?
+    var lastDonation: Date?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpViewController()
     }
-    
     func setUpViewController(){
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "Carregando"
@@ -37,7 +41,14 @@ class UserViewController: UIViewController {
                 self.usernameLabel.text = document.get("name") as? String
                 self.bloodTypecd = document.get("bloodTypeCode") as? Int
                 self.bloodTypeDecoder()
-                self.birthDate.text = document.get("birthdate") as? String
+                self.birthDate = document.get("birthDate") as? Date
+                self.birthdayDateLabel.text = self.formatDateToString(date: self.birthDate!)
+                let numberOfDonations = document.get("numberOfDonations") as? Int ?? 0
+                self.numberOfDonationsLabel.text = "Número de Doações: \(numberOfDonations)"
+                if numberOfDonations != 0 {
+                self.lastDonation = document.get("lastDonation") as? Date
+                self.lastDonationDateLabel.text = "Última Doação: \(self.formatDateToString(date: self.lastDonation!))"
+                } else { self.lastDonationDateLabel.text = "Nunca doou" }
                 hud.dismiss(afterDelay: 0.0)
             }
             else { print("shit data")}
@@ -76,6 +87,13 @@ class UserViewController: UIViewController {
         }
     
     }
+    
+    func formatDateToString(date: Date) -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        return dateFormatter.string(from: date as Date)
+    }
+    
     
     @IBAction func wannaDonateSwitchTapped(_ sender: Any) {
         if wannaDonateSwitch.isOn{
