@@ -13,21 +13,20 @@ import Firebase
 import JGProgressHUD
 
 class DonatorViewController: UITableViewController {
+    //Dictionary to receive the QuerySnapshot
     var donatorsArray = [DonatorCell]()
-    
+    //Donator data to show on cells
     var donatorUsername: String?
     var donatorBloodTypecd: Int?
     var donatorBloodType: String = ""
-    
+    //User data
     var userBloodcd: Int = 31
     var userBlood: String?
     var reqBlood: String?
     var compatibleBloods: [Int] = []
-
-    
+    //Database and userUID
     var db = Firestore.firestore()
     let userUID: String = Auth.auth().currentUser!.uid as String
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +35,7 @@ class DonatorViewController: UITableViewController {
     }
     
     func loadData(){
+        //Get user data from database
         self.db.collection("users").document("\(userUID)").getDocument { (document, error) in
             if let error = error {
                 print("Error: \(error.localizedDescription)")
@@ -50,17 +50,18 @@ class DonatorViewController: UITableViewController {
         }
     }
     func getDataToCells(){
-            print("11111111111")
-        self.db.collection("users").whereField("canDonateTo", arrayContains: userBloodcd as Int).whereField("wantToContribute", isEqualTo: true).getDocuments(completion: { (QuerySnapshot, error) in
+        self.db.collection("users").whereField("canDonateTo", arrayContains: userBloodcd as Int).whereField("wantToContribute", isEqualTo: true).whereField("nextDonation", isLessThan: Date()).getDocuments(completion: { (QuerySnapshot, error) in
                 if let error = error{
                     print("\(error.localizedDescription)")
                 } else {
                     let hud = JGProgressHUD(style: .dark)
                     hud.textLabel.text = "Carregando"
                     hud.show(in: self.view)
+                    print("COMO SAI O QUERYSNAPSHOT")
                     print(QuerySnapshot as Any)
                     self.donatorsArray = QuerySnapshot!.documents.compactMap({ DonatorCell(dictionary: $0.data())})
                     DispatchQueue.main.async {
+                        print("COMO SAI O DONATORSARRAY")
                         print(self.donatorsArray)
                         self.tableView.reloadData()
                         hud.dismiss(afterDelay: 0.0)
@@ -70,27 +71,27 @@ class DonatorViewController: UITableViewController {
     }
     
     func setUpNavController(){
+        //setup logout button on navigation controller
         let logOutButtonImage = UIImageView(image:UIImage(named: "log-out"))
         let logOutButton = UIButton(type: .system)
         logOutButton.setImage(logOutButtonImage.image, for: .normal)
         logOutButtonImage.frame = CGRect(x: 0, y: 0, width: 33, height: 33)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: logOutButton)
+        let logOutRecognizer = UITapGestureRecognizer(target: self, action: #selector(DonatorViewController.lougoutButtonTapped))
+        logOutButton.isUserInteractionEnabled = true
+        logOutButton.addGestureRecognizer(logOutRecognizer)
         
+        //setup refresh button on navigation controller
         let refreshButtonImage = UIImageView(image: UIImage(named: "refresh"))
         let refreshButton = UIButton(type: .system)
         refreshButton.setImage(refreshButtonImage.image, for: .normal)
         refreshButtonImage.frame = CGRect(x: 0, y: 0, width: 33, height: 33)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: refreshButton)
-        
-        let logOutRecognizer = UITapGestureRecognizer(target: self, action: #selector(DonatorViewController.lougoutButtonTapped))
-        logOutButton.isUserInteractionEnabled = true
-        logOutButton.addGestureRecognizer(logOutRecognizer)
-        
         let refreshRecognizer = UITapGestureRecognizer(target: self, action: #selector(DonatorViewController.refreshButtonTapped))
         refreshButton.addGestureRecognizer(refreshRecognizer)
         refreshButton.isUserInteractionEnabled = true
     }
-        
+    //Functions for navigation controller buttons
     @objc private func lougoutButtonTapped(){
         try! Auth.auth().signOut()
         dismiss(animated: true, completion: nil)
@@ -99,11 +100,47 @@ class DonatorViewController: UITableViewController {
         loadData()
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("selected")
+        let donator = donatorsArray[indexPath.row]
+        let StoryBoard = UIStoryboard(name: "Main", bundle: nil)
+        let DestinatedVC = StoryBoard.instantiateViewController(withIdentifier: "RequestDonationViewController") as! RequestDonationViewController
+        DestinatedVC.getDonatorName = donator.name
+        let donatorBloodType = bloodTypeDecoder(code: donator.bloodTypeCode)!
+        DestinatedVC.getDonatorBloodType = donatorBloodType
+        DestinatedVC.getDonatorUID = donator.userUID
+        DestinatedVC.getDonatorBloodTypeCode  = donator.bloodTypeCode
+        DestinatedVC.getDonatorWannaDonate = donator.wantToContribute
+        self.navigationController?.pushViewController(DestinatedVC, animated: false)
+    }
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return donatorsArray.count
+    }
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        print(donatorsArray[indexPath.row])
+        print("\(indexPath)")
+        print("\(indexPath.row)")
+        let donator = donatorsArray[indexPath.row]
+        donatorBloodType = bloodTypeDecoder(code: donator.bloodTypeCode)!
+        cell.textLabel?.text = "\(donator.name)"
+        cell.detailTextLabel?.text = "Sangue: \(donatorBloodType)"
+        return cell
+    }
+}
+
+
+
+extension DonatorViewController {
+    //Functions for blood
     func compatibleBloodTypes(code: Int?) -> [Int]{
         let userBlood = code
         var comptBlood: [Int]?
         if userBlood == 11 {
-             comptBlood = [11,10,41,40]
+            comptBlood = [11,10,41,40]
         }
         if userBlood == 10 {
             comptBlood = [10,40]
@@ -128,7 +165,6 @@ class DonatorViewController: UITableViewController {
         }
         return comptBlood!
     }
-    
     func bloodTypeDecoder(code: Int?) -> String?{
         let btCD = code
         var decode: String?
@@ -158,43 +194,6 @@ class DonatorViewController: UITableViewController {
         }
         return decode
     }
-    
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("selected")
-        let donator = donatorsArray[indexPath.row]
-        let StoryBoard = UIStoryboard(name: "Main", bundle: nil)
-        let DestinatedVC = StoryBoard.instantiateViewController(withIdentifier: "RequestDonationViewController") as! RequestDonationViewController
-        DestinatedVC.getDonatorName = donator.name
-        let donatorBloodType = bloodTypeDecoder(code: donator.bloodTypeCode)!
-        DestinatedVC.getDonatorBloodType = donatorBloodType
-        DestinatedVC.getDonatorUID = donator.userUID
-        DestinatedVC.getDonatorBloodTypeCode  = donator.bloodTypeCode
-        DestinatedVC.getDonatorWannaDonate = donator.wantToContribute
-        self.navigationController?.pushViewController(DestinatedVC, animated: false)
-    }
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return donatorsArray.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        print(donatorsArray[indexPath.row])
-        print("\(indexPath)")
-        print("\(indexPath.row)")
-        let donator = donatorsArray[indexPath.row]
-        donatorBloodType = bloodTypeDecoder(code: donator.bloodTypeCode)!
-        cell.textLabel?.text = "\(donator.name)"
-        cell.detailTextLabel?.text = "Sangue: \(donatorBloodType)"
-        return cell
-    }
-    
 }
 
 

@@ -18,6 +18,7 @@ class UserViewController: UIViewController {
     @IBOutlet var numberOfDonationsLabel: UILabel!
     @IBOutlet var lastDonationDateLabel: UILabel!
     @IBOutlet var birthdayDateLabel: UILabel!
+    @IBOutlet var bloodPeriodLabel: UILabel!
     
     var bloodTypecd: Int?
     var db = Firestore.firestore()
@@ -25,7 +26,7 @@ class UserViewController: UIViewController {
     
     var birthDate: Date?
     var lastDonation: Date?
-    
+    var numberOfDonations: Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpViewController()
@@ -43,21 +44,45 @@ class UserViewController: UIViewController {
                 self.bloodTypeDecoder()
                 self.birthDate = document.get("birthDate") as? Date
                 self.birthdayDateLabel.text = self.formatDateToString(date: self.birthDate!)
-                let numberOfDonations = document.get("numberOfDonations") as? Int ?? 0
-                self.numberOfDonationsLabel.text = "Número de Doações: \(numberOfDonations)"
-                if numberOfDonations != 0 {
+                self.numberOfDonations = document.get("numberOfDonations") as! Int
+                self.numberOfDonationsLabel.text = "Número de Doações: \(self.numberOfDonations)"
+                if self.numberOfDonations != 0 {
                 self.lastDonation = document.get("lastDonation") as? Date
+                self.isDonationPeriodOk()
                 self.lastDonationDateLabel.text = "Última Doação: \(self.formatDateToString(date: self.lastDonation!))"
-                } else { self.lastDonationDateLabel.text = "Nunca doou" }
+                } else {
+                    self.lastDonationDateLabel.text = "Nunca doou"
+                    self.isFirstTime()
+                }
                 hud.dismiss(afterDelay: 0.0)
             }
-            else { print("shit data")}
+            else {print("shit data")}
         }
     }
 
     @IBAction func logOutButtonTapped() {
         try! Auth.auth().signOut()
         dismiss(animated: true, completion: nil)
+    }
+    
+    func isDonationPeriodOk() {
+        let date1 = Date()
+        let form = DateComponentsFormatter()
+        form.maximumUnitCount = 2
+        form.unitsStyle = .full
+        form.allowedUnits = [.month]
+        let s = form.string(from: self.lastDonation!, to: date1)
+        if s != "0 months" && s != "1 months" && s != "2 months" {
+            self.bloodPeriodLabel.textColor = UIColor.green
+            self.bloodPeriodLabel.text = "Está no período de doar"
+        }
+        
+    }
+    func isFirstTime() {
+        if self.numberOfDonations == 0 {
+            self.bloodPeriodLabel.textColor = UIColor.green
+            self.bloodPeriodLabel.text = "Está no período de doar"
+        }
     }
     
     func bloodTypeDecoder(){

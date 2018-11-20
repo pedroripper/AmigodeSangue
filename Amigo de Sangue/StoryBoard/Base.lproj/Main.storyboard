@@ -462,6 +462,13 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Não está no período de doar sangue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LZJ-EE-eLf">
+                                <rect key="frame" x="24" y="568" width="335" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.8004243338" green="0.11973612509999999" blue="0.0069154929689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="2L2-Km-g3D"/>
@@ -470,6 +477,7 @@
                     <navigationItem key="navigationItem" title="Meu Usuário" id="HoQ-A8-ER8"/>
                     <connections>
                         <outlet property="birthdayDateLabel" destination="5ad-RO-4i1" id="JbH-Fm-yuj"/>
+                        <outlet property="bloodPeriodLabel" destination="LZJ-EE-eLf" id="s1B-wc-aQJ"/>
                         <outlet property="bloodTypeLabel" destination="tVk-yz-nOU" id="stn-BA-gDz"/>
                         <outlet property="lastDonationDateLabel" destination="abs-VR-nHb" id="Dhq-XH-zP8"/>
                         <outlet property="numberOfDonationsLabel" destination="NzZ-Ct-fzp" id="urW-7v-zEm"/>
@@ -479,7 +487,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SAA-Vz-eWQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2433" y="1216"/>
+            <point key="canvasLocation" x="2432.8000000000002" y="1215.7421289355323"/>
         </scene>
         <!--Amigos de Sangue-->
         <scene sceneID="521-44-oLM">
@@ -538,7 +546,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yGV-Ks-Xc6" customClass="AkiraTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="85" y="253" width="205" height="50"/>
+                                <rect key="frame" x="85" y="211" width="205" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -550,7 +558,19 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nome Completo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RbT-Yh-2hl" customClass="AkiraTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="85" y="154" width="205" height="50"/>
+                                <rect key="frame" x="85" y="112" width="205" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" smartInsertDeleteType="yes" textContentType="name"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.61176470589999998" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Gênero" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Zd-rg-0Lc" customClass="AkiraTextField" customModule="TextFieldEffects">
+                                <rect key="frame" x="85" y="412" width="205" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -562,7 +582,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="CPF(sem dígitos)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IxP-Kd-Tjn" customClass="AkiraTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="85" y="202" width="205" height="50"/>
+                                <rect key="frame" x="85" y="160" width="205" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -582,7 +602,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Senha" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y0s-58-u2Q" customClass="AkiraTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="85" y="305" width="205" height="50"/>
+                                <rect key="frame" x="85" y="263" width="205" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -594,7 +614,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tipo Sanguíneo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DSF-8m-huh" customClass="AkiraTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="85" y="356" width="205" height="50"/>
+                                <rect key="frame" x="85" y="314" width="205" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -606,7 +626,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DwQ-VD-Z2j">
-                                <rect key="frame" x="51" y="466" width="272" height="64"/>
+                                <rect key="frame" x="51" y="470" width="272" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="SignUpBox"/>
                                 <connections>
@@ -614,7 +634,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Data de Nascimento" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r4g-j1-rAu" customClass="AkiraTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="85" y="407" width="205" height="50"/>
+                                <rect key="frame" x="85" y="365" width="205" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -625,20 +645,14 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i3b-8e-CcV">
-                                <rect key="frame" x="54" y="120" width="266" height="26"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sfn-2t-Uqq">
+                                <rect key="frame" x="298" y="430" width="30" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="Nova Conta">
-                                        <attributes>
-                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                            <font key="NSFont" size="20" name="Noteworthy-Bold"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <state key="normal" image="information"/>
+                                <connections>
+                                    <segue destination="MTH-im-T6N" kind="show" id="wOt-lJ-dT5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.61176470589999998" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="j4L-Gr-98d"/>
@@ -647,6 +661,7 @@
                         <outlet property="birthDateTextField" destination="r4g-j1-rAu" id="hqd-Gp-Xjj"/>
                         <outlet property="bloodTypeTextField" destination="DSF-8m-huh" id="Ib3-CS-JpA"/>
                         <outlet property="emailTextField" destination="yGV-Ks-Xc6" id="ZGF-7K-nIY"/>
+                        <outlet property="genderPickerTextField" destination="2Zd-rg-0Lc" id="An7-Ax-FaO"/>
                         <outlet property="passwordTextField" destination="Y0s-58-u2Q" id="1Qq-ye-m44"/>
                         <outlet property="userIdTextField" destination="IxP-Kd-Tjn" id="CeM-s8-3DH"/>
                         <outlet property="usernameTextField" destination="RbT-Yh-2hl" id="XDs-Pf-kPw"/>
@@ -656,6 +671,51 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EFC-QO-1dy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-607.20000000000005" y="-197.45127436281859"/>
+        </scene>
+        <!--Gender Info View Controller-->
+        <scene sceneID="fGT-Ti-dcR">
+            <objects>
+                <viewController id="MTH-im-T6N" customClass="GenderInfoViewController" customModule="Amigo_de_Sangue" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Y9D-4A-Yo1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="TemplateBox" translatesAutoresizingMaskIntoConstraints="NO" id="A2q-A2-m97">
+                                <rect key="frame" x="16" y="0.0" width="343" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="18" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h6I-qu-nPk">
+                                <rect key="frame" x="70" y="167" width="234" height="107"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">Seguindo os padões da Cruz Vermelha, para pessoas intersex, gender fluid e outros  se identificarem como ou masculino ou feminino. </string>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nós sabemos que a escolha entre &quot;masculino&quot; e &quot;feminino&quot; pode não realmente determinar a identidade de alguém." lineBreakMode="tailTruncation" numberOfLines="18" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="39Y-IT-dli">
+                                <rect key="frame" x="70" y="280" width="234" height="107"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MK1-bI-XLJ">
+                                <rect key="frame" x="51" y="476" width="272" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="GoBackBox"/>
+                                <connections>
+                                    <action selector="goBackButtonTapped" destination="MTH-im-T6N" eventType="touchUpInside" id="Y1R-UY-HEY"/>
+                                    <action selector="goBackButtonTapped" destination="yfF-OH-DDP" eventType="touchUpInside" id="nLb-YG-J1O"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.61107659339904785" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="HEw-ZT-aPN"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KxN-tq-Jh1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-607" y="-913"/>
         </scene>
         <!--Log In View Controller-->
         <scene sceneID="0gS-Ho-w6p">
@@ -859,6 +919,7 @@
         <image name="blood-transfusion (2)" width="19.200000762939453" height="19.200000762939453"/>
         <image name="dontacceptReq" width="186" height="61"/>
         <image name="handshake" width="19.200000762939453" height="19.200000762939453"/>
+        <image name="information" width="51.200000762939453" height="51.200000762939453"/>
         <image name="log-out" width="40" height="40"/>
         <image name="menu" width="19.200000762939453" height="19.200000762939453"/>
         <image name="sendReq" width="186" height="61"/>
@@ -866,6 +927,6 @@
         <image name="user_icon" width="12.800000190734863" height="12.800000190734863"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BSd-Qt-6FP"/>
+        <segue reference="dkb-dq-qds"/>
     </inferredMetricsTieBreakers>
 </document>

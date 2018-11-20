@@ -21,16 +21,16 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var bloodTypeTextField: UITextField!
     @IBOutlet var birthDateTextField: UITextField!
+    @IBOutlet var genderPickerTextField: UITextField!
     
     let bloodTypePicker = UIPickerView()
     let bloodTypes = ["Selecionar","A+","A-","B+","B-","AB+","AB-","O+","O-"]
     var selectedBloodType: String?
     var bloodTypecd: Int?
     var canDonateTo: [Int] = []
-    /*
-     let genderTypePicker = UIPickerView()
-     let genderTypes = ["Selecionar","Homem","Mulher","Outro"]
-     var selectedGender: String? */
+    let genderTypePicker = UIPickerView()
+    let genderTypes = ["Selecionar","Feminino","Masculino"]
+    var selectedGender: String?
     let datePicker: UIDatePicker = UIDatePicker()
     var selectedDate: String?
     var birthDayDate: NSDate?
@@ -86,12 +86,13 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                     "name": usernameText,
                     "userId": userIdText,
                     "bloodTypeCode": bloodTypecd as Any,
-                    // "gender": selectedGender as Any,
+                    "gender": self.selectedGender as Any,
                     "wantToContribute": true,
                     "userUID": userUID as Any,
                     "canDonateTo": canDonateTo as Array,
                     "numberOfDonations": 0,
-                    "birthDate": birthDayDate! as NSDate
+                    "birthDate": birthDayDate! as NSDate,
+                    "nextDonation": Date()
                     ])
                 { err in
                     if let err = err {
@@ -119,7 +120,7 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         self.passwordTextField.inputAccessoryView = toolBar
         self.usernameTextField.inputAccessoryView = toolBar
         self.birthDateTextField.inputAccessoryView = toolBar
-        //   self.genderTextField.inputAccessoryView = toolBar
+        self.genderPickerTextField.inputAccessoryView = toolBar
         
     }
     
@@ -130,6 +131,9 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     func createPickers(){
         bloodTypePicker.delegate = self
         self.bloodTypeTextField.inputView = bloodTypePicker
+        
+        genderTypePicker.delegate = self
+        self.genderPickerTextField.inputView = genderTypePicker
         
         self.datePicker.timeZone = NSTimeZone.local
         self.datePicker.locale = Locale(identifier: "pt")
@@ -209,20 +213,30 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if pickerView == bloodTypePicker{
         return bloodTypes.count
+        }
+        else {
+            return genderTypes.count
+        }
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return bloodTypes[row]
+        if pickerView == bloodTypePicker{
+            return bloodTypes[row]
+        }
+        else {
+            return genderTypes[row]
+        }
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == bloodTypePicker{
             selectedBloodType = bloodTypes[row]
             self.bloodTypeTextField.text = selectedBloodType
         }
-        /*  if pickerView == genderTypePicker{
+         if pickerView == genderTypePicker{
          selectedGender = genderTypes[row]
-         self.genderTextField.text = selectedGender
-         }*/
+         self.genderPickerTextField.text = selectedGender
+         }
     }
     
     

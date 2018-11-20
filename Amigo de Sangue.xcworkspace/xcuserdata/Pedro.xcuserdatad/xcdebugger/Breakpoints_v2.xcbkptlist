@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Amigo de Sangue/New Group/UserViewController.swift"
-            timestampString = "564346041.0535229"
+            timestampString = "564430137.1292911"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
             landmarkName = "setUpViewController()"
             landmarkType = "7">
          </BreakpointContent>

@@ -10,6 +10,7 @@
 		21B72BF78E111D75353DE181 /* Pods_Amigo_de_SangueTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A871CA9214CA40AE1AEA44E /* Pods_Amigo_de_SangueTests.framework */; };
 		2D27C561716C68079A946388 /* Pods_Amigo_de_SangueUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D4D715DAAB99BCEE76D2380 /* Pods_Amigo_de_SangueUITests.framework */; };
 		4FC7C1C84D190611B5DD2AAE /* Pods_Amigo_de_Sangue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 519ADD79C4EE4F6085B614D2 /* Pods_Amigo_de_Sangue.framework */; };
+		EB0804A021A47D6800BAAB97 /* GenderInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB08049F21A47D6800BAAB97 /* GenderInfoViewController.swift */; };
 		EB1621642181136400F6E6C9 /* RequestDonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1621632181136400F6E6C9 /* RequestDonationViewController.swift */; };
 		EB2A4A94214F441E00FECB94 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2A4A93214F441E00FECB94 /* MenuViewController.swift */; };
 		EB2A4A96214F442E00FECB94 /* AmigosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2A4A95214F442E00FECB94 /* AmigosViewController.swift */; };
@@ -64,6 +65,7 @@
 		B1A1F1268D79FF853C505BEF /* Pods-Amigo de SangueUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Amigo de SangueUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Amigo de SangueUITests/Pods-Amigo de SangueUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C22E410E2202CEBD966B5CE7 /* Pods-Amigo de SangueTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Amigo de SangueTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Amigo de SangueTests/Pods-Amigo de SangueTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D6D45664439AE005C6FF8317 /* Pods-Amigo de Sangue.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Amigo de Sangue.release.xcconfig"; path = "Pods/Target Support Files/Pods-Amigo de Sangue/Pods-Amigo de Sangue.release.xcconfig"; sourceTree = "<group>"; };
+		EB08049F21A47D6800BAAB97 /* GenderInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderInfoViewController.swift; sourceTree = "<group>"; };
 		EB1621632181136400F6E6C9 /* RequestDonationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDonationViewController.swift; sourceTree = "<group>"; };
 		EB2A4A93214F441E00FECB94 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		EB2A4A95214F442E00FECB94 /* AmigosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmigosViewController.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 			children = (
 				EB390A8D2150A54D000A7F3C /* SignUpViewController.swift */,
 				EBC3233F214B4E8200C5ABAC /* LogInViewController.swift */,
+				EB08049F21A47D6800BAAB97 /* GenderInfoViewController.swift */,
 			);
 			path = LandingPage;
 			sourceTree = "<group>";
@@ -526,6 +529,7 @@
 				EB33914C2182B0280037AD0D /* OpenDonationsAsDonatorDataModeling.swift in Sources */,
 				EBC098252183CD42008C3645 /* ChatViewController.swift in Sources */,
 				EB390A8E2150A54D000A7F3C /* SignUpViewController.swift in Sources */,
+				EB0804A021A47D6800BAAB97 /* GenderInfoViewController.swift in Sources */,
 				EBC66BBB2183855B009461A7 /* OpenDonationReceiverViewController.swift in Sources */,
 				EB2A4A98214F444F00FECB94 /* DonatorViewController.swift in Sources */,
 				EB2A4A96214F442E00FECB94 /* AmigosViewController.swift in Sources */,

@@ -19,12 +19,13 @@ class OpenDonationDonatorViewController: UIViewController {
     var db: Firestore = Firestore.firestore()
     let userUID: String = Auth.auth().currentUser!.uid as String
     
-    var numberOfDonations: Int = 0
     
+    var numberOfDonations: Int = 0
+    var userGender: String?
     //RECEIVER DATA
     var getReceiverUID = String()
-    
     var receiverBloodTypeCode: Int!
+    var nextDonation: Date?
     
     @IBOutlet var receiverNameLabel: UILabel!
     @IBOutlet var receiverBloodTypeLabel: UILabel!
@@ -53,7 +54,10 @@ class OpenDonationDonatorViewController: UIViewController {
         self.db.collection("users").document("\(userUID)").getDocument { (document, error) in
             if let error = error {
                 print("Error: \(error.localizedDescription)")
-            } else { self.numberOfDonations = document?.get("numberOfDonations") as! Int }
+            } else {
+                self.numberOfDonations = document?.get("numberOfDonations") as! Int
+                self.userGender = document?.get("gender") as? String
+            }
         }
     }
     
@@ -87,12 +91,25 @@ class OpenDonationDonatorViewController: UIViewController {
                 print("Document successfully removed!")
             }
         }
+        if self.userGender == "Feminino" {
+            let date = Date()
+            var components = DateComponents()
+            components.setValue(3, for: .month)
+            nextDonation = Calendar.current.date(byAdding: components, to: date)
+        }
+        else {
+            let date = Date()
+            var components = DateComponents()
+            components.setValue(2, for: .month)
+            nextDonation = Calendar.current.date(byAdding: components, to: date)
+        }
         self.db.collection("users").document("\(getReceiverUID)").collection("OpenDonationsReceiver").document("\(userUID)").setData([
             "isDone" : true as Bool
             ], merge: true)
         self.db.collection("users").document("\(userUID)").setData([
             "numberOfDonations": self.numberOfDonations,
-            "lastDonation": NSDate()
+            "lastDonation": NSDate(),
+            "nextDonation": nextDonation! as Date
             ], merge: true)
         hud.dismiss(afterDelay: 0.0)
         
