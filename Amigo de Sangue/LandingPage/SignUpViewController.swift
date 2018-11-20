@@ -132,6 +132,7 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         self.bloodTypeTextField.inputView = bloodTypePicker
         
         self.datePicker.timeZone = NSTimeZone.local
+        self.datePicker.locale = Locale(identifier: "pt")
         self.birthDateTextField.inputView = datePicker
         datePicker.datePickerMode = UIDatePicker.Mode.date
         datePicker.addTarget(self, action: #selector(SignUpViewController.datePickerValueChanged(_:)), for: .valueChanged)
