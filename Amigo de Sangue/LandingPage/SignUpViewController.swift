@@ -33,7 +33,7 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     var selectedGender: String?
     let datePicker: UIDatePicker = UIDatePicker()
     var selectedDate: String?
-    var birthDayDate: NSDate?
+    var birthDayDate: Date?
     
     
     
@@ -91,7 +91,7 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                     "userUID": userUID as Any,
                     "canDonateTo": canDonateTo as Array,
                     "numberOfDonations": 0,
-                    "birthDate": birthDayDate! as NSDate,
+                    "birthDate": birthDayDate! as Date,
                     "nextDonation": Date()
                     ])
                 { err in
@@ -149,9 +149,9 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = NSTimeZone.default
         dateFormatter.dateFormat =  "dd/MM/yyyy"
-        self.birthDayDate = dateFormatter.date(from: self.birthDateTextField.text!) as NSDate?
         let selectedDate: String = dateFormatter.string(from: datePicker.date)
         self.birthDateTextField.text = selectedDate
+        self.birthDayDate = dateFormatter.date(from: self.birthDateTextField.text!) as Date?
 
     }
     

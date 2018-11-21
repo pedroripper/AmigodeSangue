@@ -8,6 +8,9 @@
 
 import Foundation
 import FirebaseFirestore
+import FirebaseAuth
+
+
 
 protocol Document {
     init?(dictionary:[String:Any])
@@ -43,7 +46,14 @@ extension DonatorCell: Document {
             let userUID = dictionary["userUID"] as? String ,
             let canDonateTo = dictionary["canDonateTo"] as? [Int],
             let nextDonation = dictionary["nextDonation"] as? Date else {return nil}
+        let userCDUI: String = Auth.auth().currentUser!.uid as String
+        if userCDUI != userUID {
         self.init(name: name, bloodTypeCode: bloodTypeCode, userId: userId, wantToContribute: wantToContribute, userUID: userUID, canDonateTo: canDonateTo, nextDonation: nextDonation)
+        }
+        else {
+            return nil
+        }
+    
     }
 }
 
