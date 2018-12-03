@@ -78,14 +78,9 @@ class AmigosViewController: UITableViewController {
                 let hud = JGProgressHUD(style: .dark)
                 hud.textLabel.text = "Carregando"
                 hud.show(in: self.view)
-                print("Got this far 1")
                 self.requestsArray = QuerySnapshot!.documents.compactMap({ RequestCell(requestDictionary: $0.data())})
-                print("requests array loaded")
-                print(self.requestsArray)
                 DispatchQueue.main.async {
-                    print("loadRequests")
                     self.tableView.reloadData()
-                    print("is this ok?")
                     hud.dismiss(afterDelay: 0.0)
                 }
             }
@@ -102,7 +97,6 @@ class AmigosViewController: UITableViewController {
                 hud.show(in: self.view)
                 self.openDonatorsArray = QuerySnapshot!.documents.compactMap({ OpenDonatorCell(openDonationsDonatorDictionary: $0.data())})
                 DispatchQueue.main.async {
-                    print("loadDonationsDonator")
                     self.tableView.reloadData()
                     hud.dismiss(afterDelay: 0.0)
                 }
@@ -180,13 +174,9 @@ class AmigosViewController: UITableViewController {
         }
         //BLOOD TRANSFUSIONS IN PROCESS FOR DONATORS
         if indexPath.section == 2 {
-            print("click")
             let receivers = openDonatorsArray[indexPath.row]
-            print("RECIVERS: \(receivers)")
-            print("RECIVERS: \(receivers)")
             let DonationsDonatorVC = StoryBoard  .instantiateViewController(withIdentifier: "OpenDonationDonatorViewController") as! OpenDonationDonatorViewController
             DonationsDonatorVC.getReceiverUID = receivers.receiverUID
-            print("\(DonationsDonatorVC.getReceiverUID)")
             self.navigationController?.pushViewController(DonationsDonatorVC, animated: false)
             
         }
@@ -224,7 +214,6 @@ class AmigosViewController: UITableViewController {
  
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("declaring Cell")
         let cell = tableView.dequeueReusableCell(withIdentifier: "amigosCell", for: indexPath)
         
        if indexPath.section == 0{

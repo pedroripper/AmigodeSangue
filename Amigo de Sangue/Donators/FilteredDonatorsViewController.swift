@@ -1,5 +1,5 @@
 //
-//  DonatorViewController.swift
+//  FilteredDonatorsViewController.swift
 //  Amigo de Sangue
 //
 //  Created by Pedro Ripper on 16/09/2018.
@@ -12,7 +12,7 @@ import FirebaseFirestore
 import Firebase
 import JGProgressHUD
 
-class DonatorViewController: UITableViewController {
+class FilteredDonatorsViewController: UITableViewController {
     //Dictionary to receive the QuerySnapshot
     var donatorsArray = [DonatorCell]()
     //Donator data to show on cells
@@ -20,38 +20,24 @@ class DonatorViewController: UITableViewController {
     var donatorBloodTypecd: Int?
     var donatorBloodType: String = ""
     //User data
-    var userBloodcd: Int = 31
-    var userBlood: String?
+    var getFilterBloodcd = Int()
     var reqBlood: String?
     var compatibleBloods: [Int] = []
     //Database and userUID
     var db = Firestore.firestore()
     let userUID: String = Auth.auth().currentUser!.uid as String
-  
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavController()
-        loadData()
+        getDataToCells()
+        navigationController?.title = "Doadores para: " + bloodTypeDecoder(code: getFilterBloodcd)!
     }
     
-    func loadData(){
-        //Get user data from database
-        self.db.collection("users").document("\(userUID)").getDocument { (document, error) in
-            if let error = error {
-                print("Error: \(error.localizedDescription)")
-            } else {
-                self.userBloodcd = document?.get("bloodTypeCode") as! Int
-                print("Blood cd: \(self.userBloodcd)")
-                self.compatibleBloods.removeAll()
-                self.compatibleBloods += self.compatibleBloodTypes(code: self.userBloodcd)
-                print("User compatible bloods: \(self.compatibleBloods)")
-                self.getDataToCells()
-            }
-        }
-    }
+    
     func getDataToCells(){
-        self.db.collection("users").whereField("canDonateTo", arrayContains: userBloodcd as Int).whereField("wantToContribute", isEqualTo: true).whereField("nextDonation", isLessThan: Date()).getDocuments(completion: { (QuerySnapshot, error) in
+        self.db.collection("users").whereField("canDonateTo", arrayContains: getFilterBloodcd as Int).whereField("wantToContribute", isEqualTo: true).whereField("nextDonation", isLessThan: Date()).getDocuments(completion: { (QuerySnapshot, error) in
             if let error = error{
                 print("\(error.localizedDescription)")
             } else {
@@ -60,6 +46,7 @@ class DonatorViewController: UITableViewController {
                 hud.show(in: self.view)
                 self.donatorsArray = QuerySnapshot!.documents.compactMap({ DonatorCell(dictionary: $0.data())})
                 DispatchQueue.main.async {
+                    print(self.donatorsArray)
                     self.tableView.reloadData()
                     hud.dismiss(afterDelay: 0.0)
                 }
@@ -69,23 +56,13 @@ class DonatorViewController: UITableViewController {
     }
     
     func setUpNavController(){
-        //setup logout button on navigation controller
-        let filterButtonImage = UIImageView(image:UIImage(named: "filter"))
-        let filterButton = UIButton(type: .system)
-        filterButton.setImage(filterButtonImage.image, for: .normal)
-        filterButtonImage.frame = CGRect(x: 0, y: 0, width: 33, height: 33)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: filterButton)
-        let filterRecognizer = UITapGestureRecognizer(target: self, action: #selector(DonatorViewController.filterButtonTapped))
-        filterButton.isUserInteractionEnabled = true
-        filterButton.addGestureRecognizer(filterRecognizer)
-        
         //setup refresh button on navigation controller
         let refreshButtonImage = UIImageView(image: UIImage(named: "refresh"))
         let refreshButton = UIButton(type: .system)
         refreshButton.setImage(refreshButtonImage.image, for: .normal)
         refreshButtonImage.frame = CGRect(x: 0, y: 0, width: 33, height: 33)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: refreshButton)
-        let refreshRecognizer = UITapGestureRecognizer(target: self, action: #selector(DonatorViewController.refreshButtonTapped))
+        let refreshRecognizer = UITapGestureRecognizer(target: self, action: #selector(FilterDonatorsViewController.filterButtonTapped))
         refreshButton.addGestureRecognizer(refreshRecognizer)
         refreshButton.isUserInteractionEnabled = true
     }
@@ -97,7 +74,7 @@ class DonatorViewController: UITableViewController {
         self.navigationController?.pushViewController(DestinatedVC, animated: false)
     }
     @objc private func refreshButtonTapped(){
-        loadData()
+        getDataToCells()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -119,7 +96,7 @@ class DonatorViewController: UITableViewController {
         return donatorsArray.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "FilterCell", for: indexPath)
         let donator = donatorsArray[indexPath.row]
         donatorBloodType = bloodTypeDecoder(code: donator.bloodTypeCode)!
         cell.textLabel?.text = "\(donator.name)"
@@ -130,7 +107,7 @@ class DonatorViewController: UITableViewController {
 
 
 
-extension DonatorViewController {
+extension FilteredDonatorsViewController {
     //Functions for blood
     func compatibleBloodTypes(code: Int?) -> [Int]{
         let userBlood = code

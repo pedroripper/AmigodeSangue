@@ -38,7 +38,6 @@ class UserViewController: UIViewController {
         print(Auth.auth().currentUser?.uid as Any)
         db.collection("users").document(userUID).getDocument { (document, error) in
             if let document = document, document.exists{
-                print("GOT DOC")
                 self.usernameLabel.text = document.get("name") as? String
                 self.bloodTypecd = document.get("bloodTypeCode") as? Int
                 self.bloodTypeDecoder()
@@ -56,7 +55,9 @@ class UserViewController: UIViewController {
                 }
                 hud.dismiss(afterDelay: 0.0)
             }
-            else {print("shit data")}
+            else {
+                print("Error: \(String(describing: error?.localizedDescription))")
+            }
         }
     }
 

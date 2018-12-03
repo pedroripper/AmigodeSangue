@@ -58,7 +58,6 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         if emailTextField.text != "" && passwordTextField.text != "" && userIdTextField.text != "" && userIdTextField.text != "" && bloodTypeTextField.text != ""{
             Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
                 if let error = error {
-                    print("ERROR CREATING USER:")
                     print(error.localizedDescription)
                 } else {
                     saveUserInfo()
@@ -68,14 +67,12 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                     self.emailTextField.text = ""
                     self.passwordTextField.text = ""
                     self.userIdTextField.text = ""
-                    print("USER SAVED SUCCESSFULLY")
                 }
             }}
         //SAVE USER TO DATABASE
         func saveUserInfo(){
             bloodTypeCode()
             canDonateTo = donations()
-            print(canDonateTo)
             let user =  Auth.auth().currentUser
             if user != nil {
                 let userUID = user?.uid

@@ -12,6 +12,7 @@
 		4FC7C1C84D190611B5DD2AAE /* Pods_Amigo_de_Sangue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 519ADD79C4EE4F6085B614D2 /* Pods_Amigo_de_Sangue.framework */; };
 		EB0804A021A47D6800BAAB97 /* GenderInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB08049F21A47D6800BAAB97 /* GenderInfoViewController.swift */; };
 		EB1621642181136400F6E6C9 /* RequestDonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1621632181136400F6E6C9 /* RequestDonationViewController.swift */; };
+		EB202D1621B1C3DC00027343 /* FilterDonatorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB202D1521B1C3DC00027343 /* FilterDonatorsViewController.swift */; };
 		EB2A4A94214F441E00FECB94 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2A4A93214F441E00FECB94 /* MenuViewController.swift */; };
 		EB2A4A96214F442E00FECB94 /* AmigosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2A4A95214F442E00FECB94 /* AmigosViewController.swift */; };
 		EB2A4A98214F444F00FECB94 /* DonatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2A4A97214F444F00FECB94 /* DonatorViewController.swift */; };
@@ -33,6 +34,7 @@
 		EBC3235E214B4E8300C5ABAC /* Amigo_de_SangueUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC3235D214B4E8300C5ABAC /* Amigo_de_SangueUITests.swift */; };
 		EBC66BB92183852B009461A7 /* OpenDonationDonatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC66BB82183852B009461A7 /* OpenDonationDonatorViewController.swift */; };
 		EBC66BBB2183855B009461A7 /* OpenDonationReceiverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC66BBA2183855B009461A7 /* OpenDonationReceiverViewController.swift */; };
+		EBD0FC0821B5B2170032AEF3 /* FilteredDonatorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD0FC0721B5B2170032AEF3 /* FilteredDonatorsViewController.swift */; };
 		EBE51887214C4FC9009E4852 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EBE51886214C4FC8009E4852 /* GoogleService-Info.plist */; };
 		EBE51888214C4FC9009E4852 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EBE51886214C4FC8009E4852 /* GoogleService-Info.plist */; };
 		EBE51889214C4FC9009E4852 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EBE51886214C4FC8009E4852 /* GoogleService-Info.plist */; };
@@ -67,6 +69,7 @@
 		D6D45664439AE005C6FF8317 /* Pods-Amigo de Sangue.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Amigo de Sangue.release.xcconfig"; path = "Pods/Target Support Files/Pods-Amigo de Sangue/Pods-Amigo de Sangue.release.xcconfig"; sourceTree = "<group>"; };
 		EB08049F21A47D6800BAAB97 /* GenderInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderInfoViewController.swift; sourceTree = "<group>"; };
 		EB1621632181136400F6E6C9 /* RequestDonationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDonationViewController.swift; sourceTree = "<group>"; };
+		EB202D1521B1C3DC00027343 /* FilterDonatorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDonatorsViewController.swift; sourceTree = "<group>"; };
 		EB2A4A93214F441E00FECB94 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		EB2A4A95214F442E00FECB94 /* AmigosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmigosViewController.swift; sourceTree = "<group>"; };
 		EB2A4A97214F444F00FECB94 /* DonatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonatorViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +97,7 @@
 		EBC3235F214B4E8300C5ABAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EBC66BB82183852B009461A7 /* OpenDonationDonatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDonationDonatorViewController.swift; sourceTree = "<group>"; };
 		EBC66BBA2183855B009461A7 /* OpenDonationReceiverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDonationReceiverViewController.swift; sourceTree = "<group>"; };
+		EBD0FC0721B5B2170032AEF3 /* FilteredDonatorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredDonatorsViewController.swift; sourceTree = "<group>"; };
 		EBE51886214C4FC8009E4852 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -155,6 +159,8 @@
 				EB2A4A97214F444F00FECB94 /* DonatorViewController.swift */,
 				EB1621632181136400F6E6C9 /* RequestDonationViewController.swift */,
 				EB8B54FB218A194D00A21B43 /* CentersDataModeling.swift */,
+				EB202D1521B1C3DC00027343 /* FilterDonatorsViewController.swift */,
+				EBD0FC0721B5B2170032AEF3 /* FilteredDonatorsViewController.swift */,
 			);
 			path = Donators;
 			sourceTree = "<group>";
@@ -524,6 +530,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB202D1621B1C3DC00027343 /* FilterDonatorsViewController.swift in Sources */,
 				EB5BCC0621630C2100C3BD2C /* UserViewController.swift in Sources */,
 				EB8B54FC218A194D00A21B43 /* CentersDataModeling.swift in Sources */,
 				EB33914C2182B0280037AD0D /* OpenDonationsAsDonatorDataModeling.swift in Sources */,
@@ -542,6 +549,7 @@
 				EB2A4A94214F441E00FECB94 /* MenuViewController.swift in Sources */,
 				EB33914A218275890037AD0D /* RequestsDonationDataModeling.swift in Sources */,
 				EBC3233E214B4E8200C5ABAC /* AppDelegate.swift in Sources */,
+				EBD0FC0821B5B2170032AEF3 /* FilteredDonatorsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

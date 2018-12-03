@@ -43,7 +43,6 @@ class AcceptDonationViewController: UIViewController {
         hud.show(in: self.view)
         self.receiverNameLabel.text = getReceiverName
         self.receiverBloodTypeLabel.text = getReceiverBloodType
-        print(getReceiverName)
         self.db.collection("users").document(self.userUID).collection("ReceiversRequest").document(getReceiverUID).getDocument { (DocumentSnapshot, error) in
             if let error = error {
                 print("Error: \(error)")

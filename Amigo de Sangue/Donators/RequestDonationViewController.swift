@@ -52,7 +52,6 @@ class RequestDonationViewController: UIViewController, UIPickerViewDelegate, UIP
     func userData(){
         db.collection("users").document(userUID).getDocument { (document, error) in
         if let document = document, document.exists{
-        print("GOT DOC")
             self.userBloodTypecode = document.get("bloodTypeCode") as? Int
             self.username = document.get("name") as? String
             }
