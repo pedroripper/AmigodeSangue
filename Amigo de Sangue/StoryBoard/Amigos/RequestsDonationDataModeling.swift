@@ -28,7 +28,7 @@ struct RequestCell {
             "donatorUID": donatorUID,
             "receiverBloodTypeCode": receiverBloodTypeCode,
             "receiverName": receiverName,
-            "receiverUID": receiverUID
+            "receiverUID": receiverUID,
         ]
     }
 }

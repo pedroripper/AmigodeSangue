@@ -10,13 +10,61 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Amigo de Sangue/New Group/UserViewController.swift"
-            timestampString = "565558811.378323"
+            timestampString = "565589271.802986"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"
             endingLineNumber = "43"
             landmarkName = "setUpViewController()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Amigo de Sangue/LandingPage/LogInViewController.swift"
+            timestampString = "565748213.864417"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "signInButtonTapped()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Amigo_de_Sangue.LogInViewController.signInButtonTapped() -&gt; ()"
+                  moduleName = "Amigo de Sangue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Pedro/Documents/AmigodeSangue-ios/Amigo%20de%20Sangue/LandingPage/LogInViewController.swift"
+                  timestampString = "565726588.581266"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "1257">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Amigo_de_Sangue.LogInViewController.signInButtonTapped() -&gt; ()"
+                  moduleName = "Amigo de Sangue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Pedro/Documents/AmigodeSangue-ios/Amigo%20de%20Sangue/LandingPage/LogInViewController.swift"
+                  timestampString = "565726588.586992"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "49">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

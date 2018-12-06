@@ -87,6 +87,7 @@ class FilteredDonatorsViewController: UITableViewController {
         DestinatedVC.getDonatorUID = donator.userUID
         DestinatedVC.getDonatorBloodTypeCode  = donator.bloodTypeCode
         DestinatedVC.getDonatorWannaDonate = donator.wantToContribute
+        DestinatedVC.getReceiverFilteredBloodcd = getFilterBloodcd
         self.navigationController?.pushViewController(DestinatedVC, animated: false)
     }
     override func numberOfSections(in tableView: UITableView) -> Int {

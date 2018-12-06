@@ -13,23 +13,7 @@ class MenuViewController: UIViewController {
     var user = Auth.auth().currentUser
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpNavController()
-        
     }
-    func setUpNavController(){
-        let logOutButtonImage = UIImageView(image:UIImage(named: "logout"))
-        let logOutButton = UIButton(type: .system)
-        logOutButton.setImage(logOutButtonImage.image, for: .normal)
-        logOutButtonImage.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: logOutButton)
-        
-        let recognizer = UITapGestureRecognizer(target: self, action: #selector(MenuViewController.lougoutButtonTapped))
-        logOutButton.isUserInteractionEnabled = true
-        logOutButton.addGestureRecognizer(recognizer)
-        
-    }
-    @objc private func lougoutButtonTapped(){
-        try! Auth.auth().signOut()
-        dismiss(animated: true, completion: nil)
-    }
+
+   
 }

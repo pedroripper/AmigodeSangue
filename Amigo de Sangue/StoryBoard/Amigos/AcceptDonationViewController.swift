@@ -28,9 +28,8 @@ class AcceptDonationViewController: UIViewController {
     
     @IBOutlet var receiverNameLabel: UILabel!
     @IBOutlet var receiverBloodTypeLabel: UILabel!
-    
     @IBOutlet weak var requestedCenterName: UILabel!
-    
+    var receiverInfo: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +47,7 @@ class AcceptDonationViewController: UIViewController {
                 print("Error: \(error)")
             } else {
                 self.requestedCenterName.text = DocumentSnapshot?.get("selectedCenter") as? String
+                self.receiverInfo = DocumentSnapshot?.get("receiverInfo") as! String
             }
         }
         hud.dismiss(afterDelay: 0.0)
@@ -72,7 +72,8 @@ class AcceptDonationViewController: UIViewController {
                 "receiverName": self.getReceiverName as String,
                 "receiverUID": self.getReceiverUID as String,
                 "isDone": false as Bool,
-                "selectedCenter": self.requestedCenterName.text ?? " -- "
+                "selectedCenter": self.requestedCenterName.text ?? " -- ",
+                "receiverInfo": self.receiverInfo as String
                 ])
     }
                 self.db.collection("users").document(self.userUID).collection("ReceiversRequest").document("\(self.getReceiverUID)").delete() { err in

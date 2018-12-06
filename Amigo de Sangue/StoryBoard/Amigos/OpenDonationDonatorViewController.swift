@@ -26,6 +26,7 @@ class OpenDonationDonatorViewController: UIViewController {
     var getReceiverUID = String()
     var receiverBloodTypeCode: Int!
     var nextDonation: Date?
+    @IBOutlet var receiverInfoLabel: UILabel!
     
     @IBOutlet var receiverNameLabel: UILabel!
     @IBOutlet var receiverBloodTypeLabel: UILabel!
@@ -48,6 +49,7 @@ class OpenDonationDonatorViewController: UIViewController {
                 self.receiverNameLabel.text = document?.get("receiverName") as? String
                 self.receiverBloodTypeCode = document?.get("receiverBloodTypeCode") as? Int
                 self.receiverBloodTypeLabel.text = self.bloodTypeDecoder(code: self.receiverBloodTypeCode)
+                self.receiverInfoLabel.text = document?.get("receiverInfo") as? String
                 hud.dismiss(afterDelay: 0.0)
             }
         }

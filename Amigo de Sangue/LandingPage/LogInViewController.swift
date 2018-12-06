@@ -27,14 +27,14 @@ class LogInViewController: UIViewController {
     }
  
     @IBAction func signInButtonTapped() {
-        if emailTextField.text != " " && passwordTextField.text != " "{
+        if emailTextField.text != "" && passwordTextField.text != ""{
             Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
                 if user != nil {
                    // UserDefaults.standard.set(true, forKey: "LogIn")
                    // UserDefaults.standard.synchronize()
                     self.performSegue(withIdentifier: "logInSegue", sender: self)
-                    self.emailTextField.text = " "
-                    self.passwordTextField.text = " "
+                    self.emailTextField.text = ""
+                    self.passwordTextField.text = ""
                     
                 }
                 else{

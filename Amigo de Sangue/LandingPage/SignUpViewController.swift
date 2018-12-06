@@ -67,6 +67,10 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                     self.emailTextField.text = ""
                     self.passwordTextField.text = ""
                     self.userIdTextField.text = ""
+                    self.usernameTextField.text = ""
+                    self.bloodTypeTextField.text = ""
+                    self.genderPickerTextField.text = ""
+                    self.birthDateTextField.text = ""
                 }
             }}
         //SAVE USER TO DATABASE

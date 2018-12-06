@@ -39,16 +39,6 @@ class AmigosViewController: UITableViewController {
     
     //LOAD NAVIGATION CONTROLLER
     func setUpNavController(){
-        let logOutButtonImage = UIImageView(image:UIImage(named: "log-out"))
-        let logOutButton = UIButton(type: .system)
-        logOutButton.setImage(logOutButtonImage.image, for: .normal)
-        logOutButtonImage.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: logOutButton)
-        
-        let recognizer = UITapGestureRecognizer(target: self, action: #selector(AmigosViewController.lougoutButtonTapped))
-        logOutButton.isUserInteractionEnabled = true
-        logOutButton.addGestureRecognizer(recognizer)
-        
         let refreshButtonImage = UIImageView(image: UIImage(named: "refresh"))
         let refreshButton = UIButton(type: .system)
         refreshButton.setImage(refreshButtonImage.image, for: .normal)
@@ -59,10 +49,7 @@ class AmigosViewController: UITableViewController {
         refreshButton.addGestureRecognizer(refreshRecognizer)
         refreshButton.isUserInteractionEnabled = true
     }
-    @objc private func lougoutButtonTapped(){
-        try! Auth.auth().signOut()
-        dismiss(animated: true, completion: nil)
-    }
+
     @objc private func refreshButtonTapped(){
         loadRequestsData()
         loadOpenDonationsRECEIVER()

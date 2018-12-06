@@ -22,7 +22,7 @@ class OpenDonationReceiverViewController: UIViewController {
     
     @IBOutlet weak var donatorNameTextField: UILabel!
     @IBOutlet weak var donatorBloodTextField: UILabel!
-    @IBOutlet weak var requestedCenterName: UILabel!
+   
     var donatorBloodTypeCode: Int?
     var isDonationCancelled: Bool?
     var isDonationCompleted: Bool?
@@ -49,7 +49,6 @@ class OpenDonationReceiverViewController: UIViewController {
                 self.donatorNameTextField.text = document?.get("donatorName") as? String
                 self.donatorBloodTypeCode = document?.get("donatorBloodTypeCode") as? Int
                 self.donatorBloodTextField.text = self.bloodTypeDecoder(code: self.donatorBloodTypeCode)
-                self.requestedCenterName.text = document?.get("selectedCenter") as? String
                 self.isDonationCancelled = document?.get("isCancelled") as? Bool
                 self.isDonationCompleted = document?.get("isDone") as? Bool
                 hud.dismiss(afterDelay: 0.0)
@@ -66,7 +65,7 @@ class OpenDonationReceiverViewController: UIViewController {
         }
         if self.isDonationCompleted == true {
             self.donationStatusLabel.textColor = UIColor.green
-            self.donationStatusLabel.text = "A doaçāo foi realizada! \nVocê agora pode apagá-la da sua caixa de doações."
+            self.donationStatusLabel.text = "A doaçāo foi realizada!"
             self.eraseButton.isHidden = false
         }
     }
