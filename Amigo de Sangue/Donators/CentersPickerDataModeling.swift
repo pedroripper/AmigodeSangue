@@ -18,8 +18,8 @@ protocol CenterDocument {
 
 struct CenterPickerOption {
     var centerName: String
-    var latitude: String
-    var longitude: String
+    var latitude: Double
+    var longitude: Double
     
     var centerDictionary: [String:Any]{
         return [
@@ -32,8 +32,8 @@ struct CenterPickerOption {
 extension CenterPickerOption: Document {
     init?(dictionary centerDictionary: [String : Any]) {
         guard let centerName = centerDictionary["centerName"] as? String,
-            let latitude = centerDictionary["latitude"] as? String,
-            let longitude = centerDictionary["longitude"] as? String else {return nil}
+            let latitude = centerDictionary["latitude"] as? Double,
+            let longitude = centerDictionary["longitude"] as? Double else {return nil}
             self.init(centerName: centerName, latitude: latitude, longitude: longitude)    
     }
 }

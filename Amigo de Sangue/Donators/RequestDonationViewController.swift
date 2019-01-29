@@ -29,8 +29,8 @@ class RequestDonationViewController: UIViewController, UIPickerViewDelegate, UIP
     @IBOutlet var centerPicker: UITextField!
     let centersPicker = UIPickerView()
     var selectedCenter: String = ""
-    var selectedCenterLatitude: String = ""
-    var selectedCenterLongitude: String = ""
+    var selectedCenterLatitude: Double?
+    var selectedCenterLongitude: Double?
     
     @IBOutlet var donatorNameLabel: UILabel!
     @IBOutlet var donatorBloodTypeLabel: UILabel!
@@ -100,6 +100,8 @@ class RequestDonationViewController: UIViewController, UIPickerViewDelegate, UIP
             "donatorName": getDonatorName,
             "receiverName": username as Any,
             "selectedCenter": centerPicker.text! as Any,
+            "selectedCenterLatitude": selectedCenterLatitude ?? 0.0,
+            "selectedCenterLongitude": selectedCenterLongitude ?? 0.0,
             "isSelfDonation": true,
             "receiverInfo": receiverInfoTextField.text! as Any
             ])
@@ -113,8 +115,8 @@ class RequestDonationViewController: UIViewController, UIPickerViewDelegate, UIP
                 "donatorName": getDonatorName,
                 "receiverName": receiverNameTextField.text as Any,
                 "selectedCenter": centerPicker.text!,
-                "selectedCenterLatitude": selectedCenterLatitude,
-                "selectedCenterLongitude": selectedCenterLongitude,
+                "selectedCenterLatitude": selectedCenterLatitude ?? 0.0,
+                "selectedCenterLongitude": selectedCenterLongitude ?? 0.0,
                 "isSelfDonation": false,
                 "whoAsked": username!,
                 "receiverInfo": receiverInfoTextField.text!

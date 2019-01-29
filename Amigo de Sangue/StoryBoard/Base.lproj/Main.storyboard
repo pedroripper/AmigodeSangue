@@ -394,6 +394,14 @@
                                                     <action selector="acceptRequestButtonTapped" destination="Eh4-KH-5Ew" eventType="touchUpInside" id="vJT-Fu-pt7"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yH6-ko-RMh">
+                                                <rect key="frame" x="95" y="313" width="139" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Ver no Google Maps"/>
+                                                <connections>
+                                                    <action selector="seeCenterLocationButtonTapped" destination="Eh4-KH-5Ew" eventType="touchUpInside" id="8co-1X-rpc"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>

@@ -11,6 +11,7 @@ import FirebaseFirestore
 import FirebaseAuth
 import Firebase
 import JGProgressHUD
+import GoogleMaps
 
 class AcceptDonationViewController: UIViewController {
 
@@ -30,10 +31,13 @@ class AcceptDonationViewController: UIViewController {
     @IBOutlet var receiverBloodTypeLabel: UILabel!
     @IBOutlet weak var requestedCenterName: UILabel!
     var receiverInfo: String = ""
+    var selectedCenterLatitude: Double?
+    var selectedCenterLongitude: Double?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
+        GMSServices.provideAPIKey("AIzaSyBuB0mXRm9jclyuEDuFMuH_Giw8X-JMTcw")
     }
     
     func loadData(){
@@ -48,6 +52,8 @@ class AcceptDonationViewController: UIViewController {
             } else {
                 self.requestedCenterName.text = DocumentSnapshot?.get("selectedCenter") as? String
                 self.receiverInfo = DocumentSnapshot?.get("receiverInfo") as! String
+                self.selectedCenterLatitude = DocumentSnapshot?.get("selectedCenterLatitude") as? Double
+                self.selectedCenterLongitude = DocumentSnapshot?.get("selectedCenterLongitude") as? Double
             }
         }
         hud.dismiss(afterDelay: 0.0)
@@ -73,6 +79,8 @@ class AcceptDonationViewController: UIViewController {
                 "receiverUID": self.getReceiverUID as String,
                 "isDone": false as Bool,
                 "selectedCenter": self.requestedCenterName.text ?? " -- ",
+                "selectedCenterLongitude": self.selectedCenterLongitude ?? 0.0,
+                "selectedCenterLatitude": self.selectedCenterLatitude ?? 0.0,
                 "receiverInfo": self.receiverInfo as String
                 ])
     }
@@ -112,6 +120,18 @@ class AcceptDonationViewController: UIViewController {
             }
         }
         hud.dismiss(afterDelay: 0.0)
+    }
+    
+    
+    @IBAction func seeCenterLocationButtonTapped() {
+        let camera = GMSCameraPosition.camera(withLatitude: selectedCenterLatitude ?? 0.0, longitude: selectedCenterLongitude ?? 0.0, zoom: 15.0)
+        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        view = mapView
+        let marker = GMSMarker()
+        marker.position = CLLocationCoordinate2D(latitude: selectedCenterLatitude ?? 0.0, longitude:selectedCenterLongitude ?? 0.0)
+        marker.title = requestedCenterName.text
+        marker.snippet = "Local de Doação"
+        marker.map = mapView
     }
     
     
