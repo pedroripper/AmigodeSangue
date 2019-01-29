@@ -24,6 +24,7 @@
 		EB5BCC0621630C2100C3BD2C /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5BCC0521630C2100C3BD2C /* UserViewController.swift */; };
 		EB6A5D89217A7AFC008D68FD /* DonatorsCellDataModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6A5D88217A7AFC008D68FD /* DonatorsCellDataModeling.swift */; };
 		EB8B54FC218A194D00A21B43 /* CentersDataModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8B54FB218A194D00A21B43 /* CentersDataModeling.swift */; };
+		EB99340521BEE80400CEA504 /* CentersPickerDataModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB99340421BEE80400CEA504 /* CentersPickerDataModeling.swift */; };
 		EBC098252183CD42008C3645 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC098242183CD42008C3645 /* ChatViewController.swift */; };
 		EBC3233E214B4E8200C5ABAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC3233D214B4E8200C5ABAC /* AppDelegate.swift */; };
 		EBC32340214B4E8200C5ABAC /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC3233F214B4E8200C5ABAC /* LogInViewController.swift */; };
@@ -81,6 +82,7 @@
 		EB5BCC0521630C2100C3BD2C /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		EB6A5D88217A7AFC008D68FD /* DonatorsCellDataModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonatorsCellDataModeling.swift; sourceTree = "<group>"; };
 		EB8B54FB218A194D00A21B43 /* CentersDataModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentersDataModeling.swift; sourceTree = "<group>"; };
+		EB99340421BEE80400CEA504 /* CentersPickerDataModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentersPickerDataModeling.swift; sourceTree = "<group>"; };
 		EBC098242183CD42008C3645 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		EBC3233A214B4E8200C5ABAC /* Amigo de Sangue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Amigo de Sangue.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBC3233D214B4E8200C5ABAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				EB6A5D88217A7AFC008D68FD /* DonatorsCellDataModeling.swift */,
 				EB2A4A97214F444F00FECB94 /* DonatorViewController.swift */,
 				EB1621632181136400F6E6C9 /* RequestDonationViewController.swift */,
+				EB99340421BEE80400CEA504 /* CentersPickerDataModeling.swift */,
 				EB8B54FB218A194D00A21B43 /* CentersDataModeling.swift */,
 				EB202D1521B1C3DC00027343 /* FilterDonatorsViewController.swift */,
 				EBD0FC0721B5B2170032AEF3 /* FilteredDonatorsViewController.swift */,
@@ -302,6 +305,7 @@
 				EBC32337214B4E8200C5ABAC /* Frameworks */,
 				EBC32338214B4E8200C5ABAC /* Resources */,
 				9FA1B4B0D116C02B249FC26F /* [CP] Embed Pods Frameworks */,
+				CEC395EEE0807CA2713920B2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -523,6 +527,28 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Amigo de Sangue/Pods-Amigo de Sangue-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		CEC395EEE0807CA2713920B2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Amigo de Sangue/Pods-Amigo de Sangue-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Amigo de Sangue/Pods-Amigo de Sangue-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -533,6 +559,7 @@
 				EB202D1621B1C3DC00027343 /* FilterDonatorsViewController.swift in Sources */,
 				EB5BCC0621630C2100C3BD2C /* UserViewController.swift in Sources */,
 				EB8B54FC218A194D00A21B43 /* CentersDataModeling.swift in Sources */,
+				EB99340521BEE80400CEA504 /* CentersPickerDataModeling.swift in Sources */,
 				EB33914C2182B0280037AD0D /* OpenDonationsAsDonatorDataModeling.swift in Sources */,
 				EBC098252183CD42008C3645 /* ChatViewController.swift in Sources */,
 				EB390A8E2150A54D000A7F3C /* SignUpViewController.swift in Sources */,

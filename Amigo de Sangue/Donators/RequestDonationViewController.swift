@@ -13,9 +13,7 @@ import Firebase
 import JGProgressHUD
 
 class RequestDonationViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-    
-    
-  
+
     var db: Firestore = Firestore.firestore()
     let userUID: String = Auth.auth().currentUser!.uid as String
     //Donator data
@@ -27,21 +25,19 @@ class RequestDonationViewController: UIViewController, UIPickerViewDelegate, UIP
     var getReceiverFilteredBloodcd = Int()
     
     //Centers
-    let centerNames = ["Selecionar","Hemorio - Centro","Banco de Sangue Serum","Santa Casa de Misericórdia"]
+    var centersArray = [CenterPickerOption]()
     @IBOutlet var centerPicker: UITextField!
     let centersPicker = UIPickerView()
     var selectedCenter: String = ""
-    
+    var selectedCenterLatitude: String = ""
+    var selectedCenterLongitude: String = ""
     
     @IBOutlet var donatorNameLabel: UILabel!
     @IBOutlet var donatorBloodTypeLabel: UILabel!
     @IBOutlet var donatorStatsOkLabel: UILabel!
     @IBOutlet var requestSentLabel: UILabel!
-    
     @IBOutlet var receiverNameTextField: UITextField!
     @IBOutlet var receiverInfoTextField: UITextField!
-    
-    
     
     var userBloodTypecode: Int?
     var username: String?
@@ -77,6 +73,18 @@ class RequestDonationViewController: UIViewController, UIPickerViewDelegate, UIP
     }
     
     func createCentersPicker(){
+        db.collection("centers").getDocuments { (document, error) in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            } else {
+                self.centersArray = document!.documents.compactMap({ CenterPickerOption(dictionary: $0.data())})
+                DispatchQueue.main.async {
+                    print("CentersArray")
+                    print(self.centersArray)
+                    self.centersPicker.reloadAllComponents()
+                }
+            }
+        }
         centersPicker.delegate = self
         self.centerPicker.inputView = centersPicker
     }
@@ -105,6 +113,8 @@ class RequestDonationViewController: UIViewController, UIPickerViewDelegate, UIP
                 "donatorName": getDonatorName,
                 "receiverName": receiverNameTextField.text as Any,
                 "selectedCenter": centerPicker.text!,
+                "selectedCenterLatitude": selectedCenterLatitude,
+                "selectedCenterLongitude": selectedCenterLongitude,
                 "isSelfDonation": false,
                 "whoAsked": username!,
                 "receiverInfo": receiverInfoTextField.text!
@@ -125,20 +135,6 @@ class RequestDonationViewController: UIViewController, UIPickerViewDelegate, UIP
     }
     @objc func dismissKeyboard(){
         view.endEditing(true)
-    }
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return centerNames.count
-    }
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return centerNames[row]
-    }
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedCenter = centerNames[row]
-        self.centerPicker.text = selectedCenter
     }
     
 }
@@ -173,4 +169,21 @@ extension RequestDonationViewController {
         }
         return decode
     }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return centersArray.count
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return centersArray[row].centerName
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.centerPicker.text = centersArray[row].centerName
+        self.selectedCenterLatitude = centersArray[row].latitude
+        self.selectedCenterLongitude = centersArray[row].longitude
+    }
+    
 }
